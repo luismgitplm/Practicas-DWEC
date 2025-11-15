@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <h1>Luis Miguel Rodríguez Narváez / 03-04 DWEC</h1>
+
+    <h2>Ejercicios 1, 2 y 3: Creación, cerrado y comprobación de ventana</h2>
+    <p>Indique la altura de la ventana: <input type="text" id="ej1altura"></p>
+    <p>Indique el ancho de la ventana: <input type="text" id="ej1ancho"></p>
+    <p><button id = "crearVentana" onclick="crearVentana()">Pulse para crear nueva ventana</button></p>
+    <p><button id="cerrarVentana" onclick="cerrarVentana()">Pulse para cerrar la nueva ventana</button></p>
+    <p><button id="comprobarVentana" onclick="comprobarVentana()">Pulse para ver si está abierta o cerrada</button></p>
+    <div id="textoComprobar"></div>
+
+    <script>
+        Math.floor(Math.random() * 10) + 1;
+
+        let min = 50, max = 100;
+        let aleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        var nuevaVentana;
+
+        function crearVentana(){
+            var altura = Number(document.getElementById("ej1altura").value);
+            var ancho = Number(document.getElementById("ej1ancho").value);
+
+            if (!altura || !ancho){
+                document.getElementById("textoComprobar").innerHTML = 
+                    "Debe indicar altura y ancho de la ventana.";
+                return;
+            }
+
+             nuevaVentana = window.open("http://www.google.es","","height="+altura+",width="+ancho);
+        }
+
+        function cerrarVentana(){
+            if(nuevaVentana){
+                nuevaVentana.close();
+                nuevaVentana = null;
+            }
+        }
+
+        function comprobarVentana(){
+            let mensaje;
+            if(nuevaVentana){
+                mensaje = "La ventana está abierta";
+            } else {
+                mensaje = "La ventana está cerrada";
+            }
+
+            document.getElementById("textoComprobar").innerHTML = mensaje;
+        }
+    </script>
+    
+    <h2>Ejercicio 4</h2>
+    <button onclick="abrirVentana()">Abrir ventana</button>
+
+    <script>
+        let ventanaEj4;
+
+        function abrirVentana() {
+            
+            const url = prompt("Introduce la URL que quieres abrir:");
+
+            if (url) {
+                ventanaEj4 = window.open(url, "ventanaEjercicio4", "width=600,height=400");
+            }
+        }
+  </script>
+
+  <h2>Ejercicio 5</h2>
+  <button onclick="mostrarAlertas()">Mostrar alertas</button>
+  <div id="resultado"></div>
+
+  <script>
+    function mostrarAlertas(){
+        alert("ALERTA Te están robando el banco");
+        let respuesta = confirm("¿Estás de acuerdo?");
+
+        if (respuesta){
+            document.getElementById("resultado").innerHTML = "De acuerdo";
+        } else{
+            document.getElementById("resultado").innerHTML = "No de acuerdo";
+        }
+    }
+  </script>
+
+  <h2>Ejercicio 6: Saludos con setInterval</h2>
+    <button onclick="iniciarHola()">Iniciar saludos</button>
+    <button onclick="detenerHola()">Detener saludos</button>
+    <div id="salida"></div>
+
+    <script>
+        let intervalo; 
+
+        function dihola(valor) {
+            document.getElementById("salida").innerHTML += valor + "<br>";
+        }
+
+        function iniciarHola() {
+            if (!intervalo) {
+                intervalo = setInterval(dihola, 500, "Hola"); 
+            }
+        }
+
+        function detenerHola() {
+            clearInterval(intervalo);
+            intervalo = null; 
+        }
+    </script>
+
+    <h2>Ejercicio 7: Mostrar hora con setInterval</h2>
+
+    <button onclick="iniciarReloj()">Iniciar Reloj</button>
+    <button onclick="detenerReloj()">Detener Reloj</button>
+    <div id="reloj"></div>
+
+    <script>
+        let intervaloReloj;
+
+        function mostrarHora(){
+            let date = new Date();
+            document.getElementById("reloj").innerHTML = date.toLocaleTimeString();
+        }
+
+        function iniciarReloj(){
+            if (!intervaloReloj){
+                mostrarHora();
+                intervaloReloj = setInterval(mostrarHora, 1000);
+            }
+        }
+
+        function detenerReloj(){
+            clearInterval(intervaloReloj);
+            intervaloReloj = null;
+        }
+    </script>
+
+    <h2>Ejercicio 8</h2>
+    <h2>The setInterval() and clearInterval() Methods</h2>
+    <button onclick="stopColor()">Stop </button>
+    <button onclick=" iniciarIntervalo()">Start </button>
+    <script>
+       function iniciarIntervalo() {
+            myInterval = setInterval(setColor, 500);
+        }
+
+        function setColor() {
+            let x = document.body;
+            x.style.backgroundColor = x.style.backgroundColor == "yellow" ? "pink" : "yellow";
+        }
+        function stopColor() { clearInterval(myInterval);}
+    </script>
+
+    <h2>Ejercicios 9 y 10: Colores con setInterval pidiendo tiempo y color</h2>
+    <button onclick="stopColor2()">Stop</button>
+    <button onclick="iniciarIntervalo2()">Start</button>
+
+    <script>
+    let myInterval2;
+    let color1;
+    let color2;
+
+    function iniciarIntervalo2() {
+        let tiempo = Number(prompt("Introduce el intervalo en milisegundos:", "500"));
+        if (!tiempo || tiempo <= 0) {
+            alert("Por favor, introduce un número válido mayor que 0.");
+            return;
+        }
+
+        color1 = prompt("Introduce el primer color:", "yellow") || "yellow";
+        color2 = prompt("Introduce el segundo color:", "pink") || "pink";
+
+        if (myInterval2) clearInterval(myInterval2);
+
+        myInterval2 = setInterval(setColor2, tiempo);
+    }
+
+    function setColor2() {
+        let x = document.body;
+        x.style.backgroundColor = (x.style.backgroundColor == color1) ? color2 : color1;
+    }
+
+    function stopColor2() {
+        clearInterval(myInterval2);
+        myInterval2 = null;
+    }
+    </script>
+</body>
+</html>

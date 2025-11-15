@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Luis Miguel Rodrígez Narváez 03-06 DWEC</h1>
+    <h2>Ejercicio 1</h2>
+    <div id="contenidoEj1"></div>
+
+    <script>
+        function mostrarDatos(datos){
+            document.getElementById("contenidoEj1").innerHTML += datos + "<br><hr>";
+        }
+
+        mostrarDatos("<h3>anchors[]</h3>");
+        if (document.anchors) {
+        if (document.anchors.length === 0) mostrarDatos("[Sin elementos o deprecado]");
+            for (let i = 0; i < document.anchors.length; i++) {
+                mostrarDatos(`Anchor ${i}: ${document.anchors[i].outerHTML}`);
+            }
+        } else {
+        mostrarDatos("   [document.anchors no está disponible]");
+        }
+
+        mostrarDatos("<h3>document.applets</h3>");
+        if (document.applets) {
+        if (document.applets.length === 0) mostrarDatos("[Sin elementos o deprecado]");
+            for (let i = 0; i < document.applets.length; i++) {
+                mostrarDatos(`Applet ${i}: ${document.applets[i].outerHTML}`);
+            }
+        } else {
+        mostrarDatos("[document.applets no está disponible]");
+        }
+
+        mostrarDatos("<h3>document.links</h3>");
+        if (document.links.length === 0) mostrarDatos("[Sin enlaces]");
+        for (let i = 0; i < document.links.length; i++) {
+        mostrarDatos(`Link ${i}: ${document.links[i].href}`);
+        }
+
+         mostrarDatos("<h3>document.forms</h3>");
+        if (document.forms.length === 0) mostrarDatos("   [Sin formularios]");
+        for (let i = 0; i < document.forms.length; i++) {
+        mostrarDatos(`Form ${i}: ${document.forms[i].outerHTML}`);
+        }
+
+         mostrarDatos("<h3>document.images</h3>");
+        if (document.images.length === 0) mostrarDatos("   [Sin imágenes]");
+        for (let i = 0; i < document.images.length; i++) {
+        mostrarDatos(`Image ${i}: ${document.images[i].src}`);
+        }
+
+        mostrarDatos("<h3>document.scripts</h3>");
+        if (document.scripts.length === 0) mostrarDatos("   [Sin scripts]");
+        for (let i = 0; i < document.scripts.length; i++) {
+        const src = document.scripts[i].src || "[inline script]";
+        mostrarDatos(`Script ${i}: ${src}`);
+        }
+
+         mostrarDatos("<h3>document.styleSheets</h3>");
+        if (document.styleSheets.length === 0) mostrarDatos("   [Sin hojas de estilo]");
+        for (let i = 0; i < document.styleSheets.length; i++) {
+        const href = document.styleSheets[i].href || "[incrustada]";
+        mostrarDatos(`StyleSheet ${i}: ${href}`);
+        }
+
+         mostrarDatos("<h3>document.cookie</h3>");
+        if (document.cookie) {
+        const cookies = document.cookie.split("; ");
+        cookies.forEach((cookie, index) => {
+            mostrarDatos(`Cookie ${index}: ${cookie}`);
+        });
+        } else {
+        mostrarDatos("   [No hay cookies o están deshabilitadas]");
+        }
+    </script>
+
+    <h2>Ejercicio 2</h2>
+    
+    <div id="informaciónEj2"></div>
+
+    <script>
+        
+        let propiedades = `
+        <ul>
+        <li>document.domain: ${document.domain || "Sin dominio"}</li>
+        <li>document.lastModified: ${document.lastModified}</li>
+        <li>document.readyState: ${document.readyState}</li>
+        <li>document.referrer: ${document.referrer || "Sin referencia"}</li>
+        <li>document.title: ${document.title}</li>
+        <li>document.URL: ${document.URL}</li>
+        </ul>
+        `;
+
+        document.getElementById("informaciónEj2").innerHTML = propiedades;
+    </script>
+
+    <h2>Ejercicios 3 y 4: Cambiar título y mostrar datos con .getElementById</h2>
+    <p>Escriba el nuevo título: <input type="text" name="nuevoTitle" id="nuevoTitle"></p>
+    <button onclick="cambiarTitulo()">Cambiar Título</button>
+    <div id="etiquetatituloviejo"> </div>
+    <div id="etiquetatitulonuevo"> </div>
+
+    <script language="JavaScript">
+        function cambiarTitulo(){
+            let nuevoTitulo = document.getElementById("nuevoTitle").value;
+
+            document.getElementById("etiquetatituloviejo").innerHTML = "Titulo antiguo "+document.title;
+            document.title = nuevoTitulo;
+            document.getElementById("etiquetatitulonuevo").innerHTML = "Título nuevo "+document.title;
+        }
+    </script>
+
+    <h2>Ejercicio 5</h2>
+    <p>Indique su nombre: <input type="text" name="nombreEj5" id="nombreEj5"></p>
+    <button onclick="indicarNombre()">Enviar</button>
+    <div id="contenidoEj5"> </div>
+
+    <script language="JavaScript">
+        function indicarNombre(){
+            let nombre = document.getElementById("nombreEj5").value;
+
+            if (nombre) document.getElementById("contenidoEj5").innerHTML = "El nombre indicado es: "+nombre;
+        }
+    </script>
+
+    <h2>Ejercicio 6</h2>
+    <p>Indique en cada campo un texto que sustituya a Elemento 1 y Elemento 2:</p>
+    <p id="contenidoElemento1">Elemento 1 <input type="text" id="elemento1">
+        <input type="button" value="Sustituir" onclick="sustituir1()"></p>
+    
+    <p id="contenidoElemento2">Elemento 2 <input type="text" id="elemento2">
+        <input type="button" value="Sustituir" onclick="sustituir2()"></p>
+    
+
+    <script language="JavaScript">
+        function sustituir1(){
+            let sustituto1 = document.getElementById("elemento1").value;
+            document.getElementById("contenidoElemento1").innerHTML = sustituto1;
+        }
+
+        function sustituir2(){
+            let sustituto2 = document.getElementById("elemento2").value;
+            document.getElementById("contenidoElemento2").innerHTML = sustituto2;
+        }
+    </script>
+
+    <h2>Ejercicio 7</h2>
+    <h2>Metodo getElementsByTagName()</h2>
+    <p>La lista comienza en 7 porque ya hay seis elementos previos con tag li en el ejercicio 2</p>
+    <p>Seleccione un número de la lista: <input type="number" id="seleccion">
+        <input type="button" value="Seleccionar" onclick="seleccionar()"></p>
+
+    <ol start="7">
+        <li>Torremolinos</li>
+        <li>Málaga</li>
+        <li>Granada</li>
+
+        <li>Sevilla</li>
+        <li>Alhaurin</li>
+        <li>Churriana</li>
+    </ol>
+
+    <p id="indice"></p>
+    <h2 id="lista"></h2>
+    <script>
+        function seleccionar(){
+            let numero = document.getElementById("seleccion").value;indice_string= "El "+ numero +"o elemento de la lista es";
+            const collection = document.getElementsByTagName("li");
+            document.getElementById("lista").innerHTML = collection[numero-1].innerHTML;
+            document.getElementById("indice").innerHTML = indice_string;
+        }
+    </script>
+
+    <h2>Ejercicio 8</h2>
+    <h3>una cabecera h3</h3>
+    <h4>una cabecera h4</h4>
+    <strong>Texto resaltado</strong><br>
+    <span>Torremolinos</span><br>
+
+    <select id="opciones">
+        <option value="">Elige una etiqueta</option>
+        <option value="h3">h3</option>
+        <option value="h4">h4</option>
+        <option value="strong">strong</option>
+        <option value="span">span</option>
+    </select>
+    <button onclick="ej8seleccionar()">Seleccionar</button>
+
+    <p id="mensajeEj8"></p>
+    <h2 id="elemento"></h2>
+    <script>
+        function ej8seleccionar(){
+            let etiqueta = document.getElementById("opciones").value; 
+        
+            const collection = document.getElementsByTagName(etiqueta);
+            document.getElementById("mensajeEj8").innerHTML = "El contenido de la etiqueta " + etiqueta + " es: ";
+            document.getElementById("elemento").innerHTML = collection[0].innerHTML; ;
+        }
+    </script>
+
+    <h2>Ejercicio 9</h2>
+    <p>Indique la etiqueta a seleccionar <input type="number" id="seleccionEj9">
+        <input type="button" onclick="ej9seleccionar()" value="Seleccionar"></p>
+
+    <p> etiqueta1 <input type="text" name="etiqueta1" value ="Guadalajara"> </p>
+    <p> etiqueta2 <input type="text" name="etiqueta2" value ="Toledo"> </p>
+    <p> etiqueta3 <input type="text" name="etiqueta3" value ="Cuenca"> </p>
+    <hr>
+    <p id="explica"></p>
+    <h2 id="elementoEj9"></h2>
+    <script language="JavaScript">
+        function ej9seleccionar(){
+            let numero = document.getElementById("seleccionEj9").value;
+            elements = document.getElementsByName("etiqueta"+numero);
+            valorDeEtiqueta = elements[0].value;
+            document.getElementById("explica").innerHTML = "El contenido de la etiqueta " + numero + " es: ";
+            document.getElementById("elementoEj9").innerHTML = valorDeEtiqueta ;
+        }
+    </script>
+</body>
+</html>

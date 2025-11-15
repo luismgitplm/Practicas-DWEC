@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Luis Miguel Rodríguez Narváez 03-05 DWEC</h1>
+    <h2>Ejercicio 1: Prueba DOM</h2>
+    <div id="elementoaCambiar"> </div>
+    <div id="explicación">Explicación:</div>
+    <script >
+        document.getElementById("elementoaCambiar").innerHTML="texto nuevo";
+        document.getElementById("explicación").innerHTML+=" El código crea un contenedor"+
+            " div vacío que es modificado directamente desde el código javaScript mediante"+
+            " el objeto document y su método que permite obtener elementos mediante su id."
+    </script>
+
+    <h2>Ejercicio 2: Propiedades del objeto location</h2>
+    <div id="información"></div>
+
+    <script>
+        let loc = window.location;
+        let propiedades = `
+        <ul>
+        <li>hash: ${loc.hash}</li>
+        <li>host: ${loc.host}</li>
+        <li>hostname: ${loc.hostname}</li>
+        <li>href: ${loc.href}</li>
+        <li>pathname: ${loc.pathname}</li>
+        <li>port: ${loc.port}</li>
+        <li>protocol: ${loc.protocol}</li>
+        <li>search: ${loc.search}</li>
+        </ul>
+        `;
+
+        document.getElementById("información").innerHTML = propiedades;
+    </script>
+
+    <h2>Ejercicio 3</h2>
+    <h2>The assign Property of Location Object</h2>
+    <button onclick="myFunction()">Load new document</button>
+    <div id="explicaciónEj3">Explicación:</div>
+    <script>
+        function myFunction() {
+            location.assign("https://www.iesplayamar.es");
+        }
+        document.getElementById("explicaciónEj3").innerHTML += 
+            " La función assign() carga una nueva URL en la ventana actual pudiento el "+
+            "usuario usar el botón 'atrás' para volver a la página original."
+    </script>
+
+    <h2>Ejercicio 4</h2>
+    <p>Escriba una URL: <input type="text" name="url" id="url"></p>
+    <button onclick="asignar()">Cargar URL</button>
+
+    <script>
+        function asignar(){
+            let url = document.getElementById("url").value;
+            location.assign(url);
+        }
+    </script>
+
+    <h2>Ejercicios 5 y 6</h2>
+    <p>Escriba una URL: <input type="text" name="url2" id="url2"></p>
+    <button onclick="asignar2()">Cargar URL</button>
+    <button onclick="reemplazar()">Cargar URL (sin guardar la URL actual)</button>
+    <button onclick="recargar()">Recargar Página</button>
+
+    <script>
+        function asignar2(){
+            let url2 = document.getElementById("url2").value;
+            location.assign(url2);
+        }
+        function reemplazar(){
+            let url2 = document.getElementById("url2").value;
+            location.replace(url2);
+        }
+        function recargar(){
+            location.reload();
+        }
+    </script>
+
+    <h2>Ejercicio 7: Diferencia entre replace y assign</h2>
+    <p>
+        replace() y assign() se diferencian en que assign guarda la url<br>
+        anterior en el historial del navegador permitiendo volver atrás<br>
+        a la página original, mientras que replace no lo hace.
+    </p>
+
+    <h2>Ejercicio 8: Propiedades del objeto navigator</h2>
+    <div id="información2"></div>
+
+    <script>
+        
+        let propiedades2 = `
+        <ul>
+        <li>appCodeName: ${navigator.appCodeName}</li>
+        <li>appName: ${navigator.appName}</li>
+        <li>appVersion: ${navigator.appVersion}</li>
+        <li>cookieEnabled: ${navigator.cookieEnabled}</li>
+        <li>platform: ${navigator.platform}</li>
+        <li>userAgent: ${navigator.userAgent}</li>
+        </ul>
+        `;
+
+        document.getElementById("información2").innerHTML = propiedades2;
+    </script>
+
+    <h2>Ejercicios 9, 10 y 11: Insertar mapa iframe con botones de zoom</h2>
+    <h2>The Window Navigator Object</h2>
+    <h2>The The geolocation Property</h2>
+    <p id="demo"></p>
+    <iframe id="mapa" width="500" height="400" allowfullscreen></iframe>
+    <div>
+        <button onclick="cambiarZoom(-1)">Alejar</button>
+        <button onclick="cambiarZoom(1)">Acercar</button>
+    </div>
+
+    <script>
+        let zoom = 15;
+        let latitud,longitud;
+
+        try {
+            if (navigator.geolocation.getCurrentPosition(showPosition).GeolocationPositionError != PERMISSION_DENIED)
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } catch (e) {
+            document.getElementById("demo").innerHTML =
+            "Geolocation is not supported by this browser2.";
+        }
+
+        function showPosition(position) {
+            latitud = position.coords.latitude;
+            longitud = position.coords.longitude
+
+            document.getElementById("demo").innerHTML =
+            "Latitude: " + latitud + "<br>" +
+            "Longitude: " + longitud;
+
+            actualizarMapa();
+        }
+
+        function actualizarMapa(){
+            let urlMapa = `https://www.google.com/maps?q=${latitud},${longitud}&z=${zoom}&output=embed`;
+
+            document.getElementById("mapa").src = urlMapa;
+        }
+
+        function cambiarZoom(cantidad){
+            zoom += cantidad;
+            if (zoom < 1) zoom = 1;
+            if (zoom > 20) zoom = 20;
+            actualizarMapa();
+        }
+    </script>
+</body>
+</html>

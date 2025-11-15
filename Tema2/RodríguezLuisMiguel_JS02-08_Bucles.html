@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucles JS</title>
+
+    <style>
+    table, td, th {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 6px;
+    }
+  </style>
+</head>
+<body>
+    <h1>Luis Miguel Rodríguez Narváez / Práctica 02-08</h1>
+    <h3>Ejercicio 1</h3>
+    <ol>
+    <script>
+        const arr1 = ["Malaga", "Sevilla", "Cordoba", "Huelva", "Cadiz", "Almeria", "Granada" ];
+        for (let i of arr1){
+            document.writeln("<li style = color:green>"+i);
+        }
+    </script>
+    </ol>
+
+    <h3>Ejercicio 2</h3>
+    <ol>
+    <script>
+        const arr2 = ["00ff00", "00AA00", "009900", "007700", "004400", "002200", "000000"];
+        for (let i in arr1){
+            document.writeln("<li style = color:#"+ arr2[i] + ">" + arr1[i] + "</li>");
+        }
+    </script>
+    </ol>
+
+
+     <h3>Ejercicio 3</h3>
+     <script>
+        var notas = { mates: 9, Lengua: 6, fisica: 5, Quimica: 9, fisica: 5, ingles: 5 };
+        
+        document.writeln("Las asignaturas con bucle for in: <br>");
+        for(let i in notas){
+                document.writeln("Asignatura: ",i, "<br>");
+        }
+        document.writeln("<br>");
+
+        document.writeln("Las notas con blucle for of:<br>");
+        for(let i of Object.values(notas)){
+            document.writeln("Nota: ",i, "<br>");
+        }
+
+
+         
+     </script>
+
+
+    <h3>Ejercicio 4</h3>
+    <table>
+    <script>
+        const arr3 = ["bonita", "Guapa", " Bella", "Pintoresca", "Hermosa" ];
+        for(let j of arr3){
+            document.writeln("<tr>");
+            for(let i of arr1){
+                document.writeln(`<td>${i} - ${j} </td>`);
+            }
+            document.writeln("</tr>");
+        }
+    </script>
+    </table>
+</body>
+</html>

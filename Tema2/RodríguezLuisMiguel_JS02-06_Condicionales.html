@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <p><strong>
+            copia el siguiente código y ejecutalo
+        </strong>
+        <script>
+            var nombre;
+            var edad;
+            nombre=prompt('Ingrese su nombre:','');
+            edad=prompt('Ingrese su edad:','');
+            document.write('Hola ');
+            document.write(nombre);
+            document.write(' asi que tienes ');
+            document.write(edad);
+            document.write(' años');
+        </script>
+   </p>
+   <p>
+        <strong>
+            crea un programa que lea una entrada con prompt y la escriba en negrita y h1
+        </strong>
+        <script>
+            const entrada = prompt("Indique un texto:");
+            document.write(`<h1><b>${entrada}</b></h1>`);
+        </script></p>
+   <p>
+        <strong>
+            crea un programa que lea tu fecha de nacimiento y te diga si eres menor de edad, en edad activa (>=18) o
+            jubilado (>67)
+        </strong>
+        <script>
+            const fechaNac = prompt("Indique su año de nacimiento:");
+            const edad5 = new Date().getFullYear() - parseInt(fechaNac);
+            if (edad < 18) alert("Eres menor de edad");
+             else if (edad <= 67) alert("Estás en edad activa");
+             else alert("Estás en edad de jubilación");
+        </script>
+    </p>
+   <p>
+        <strong>
+            crea un programa que lea el año que es y te diga si es bisiesto o no ( ayuda: modulo 4 de el numero es 0)
+        </strong>
+        <script>
+            const year6 = parseInt(prompt("Indique un año:"));
+            alert(year6 % 4 === 0 ? "Es bisiesto" : "No es bisiesto");
+        </script>
+    </p>
+   <p>
+        <strong>
+            Solicitar al usuario un número de cliente. Si el número es el 1000, imprimir "Ganaste un premio".
+        </strong>
+        <script>
+            var numCliente = parseInt(prompt("Ingresa tu número de cliente:"));
+            if (numCliente === 1000) alert("Ganaste un premio");
+        </script>
+    </p>
+   <p>
+        <strong>
+            Solicitar al usuario que ingrese dos números y mostrar cuál de los dos es menor. Considerar el caso en que ambos
+            números son iguales.
+        </strong>
+        <script>
+            var num1 = parseFloat(prompt("Ingresa el primer número:"));
+            var num2 = parseFloat(prompt("Ingresa el segundo número:"));
+            if (num1 > num2){
+                alert(`El número ${num2} es menor`);
+            } else if(num2 > num1){
+                alert(`El número ${num1} es menor`);
+            } else{
+                alert("Ambos números indicados son iguales");
+            }
+
+        </script>
+    </p>
+   <p>
+        <strong>
+            Requerir al usuario que ingrese un día de la semana e imprimir un mensaje si es lunes, otro mensaje diferente si es
+            viernes, otro mensaje diferente si es sábado o domingo. Si el día ingresado no es ninguno de esos, imprimir otro
+            mensaje.
+        </strong>
+        <script>
+            var dia = prompt("Indique un día de la semana:").toLocaleLowerCase();
+
+            if (dia === "lunes"){
+                alert("Es lunes");
+            } else if (dia === "viernes"){
+                alert("Es viernes");
+            } else if (dia === "sábado" || dia === "domingo"){
+                alert ("Es fin de semana");
+            } else{
+                alert ("Es un día entre lunes y viernes");
+            }
+        </script>
+    </p>
+   <p>
+        <strong>
+            Escribir un programa que, dado un número entero, muestre su valor absoluto. Nota: para los números positivos su
+            valor absoluto es igual al número (el valor absoluto de 52 es 52), mientras que, para los negativos, su valor absoluto
+            es el número multiplicado por -1 (el valor absoluto de -52 es 52).
+        </strong>
+        <script>
+            var num = parseInt(prompt("Indique un número:"));
+            alert("Su valor absoluto es: " + (num < 0 ? -num : num));
+        </script>
+    </p>
+   <p>
+        <strong>
+            Solicitar al usuario que ingrese los nombres de dos personas, los cuales se almacenarán en dos variables. A
+            continuación, imprimir “coincidencia” si los nombres de ambas personas comienzan con la misma letra ó si terminan
+            con la misma letra. Si no es así, imprimir “no hay coincidencia”.
+        </strong>
+        <script>
+            var nombre1 = prompt("Indique un primer nombre");
+            var nombre2 = prompt("Indique un segundo nombre");
+            var mismaInicial = nombre1[0].toLowerCase() === nombre2[0].toLowerCase();
+            var mismaFinal = nombre1[-1].toLowerCase() === nombre2[-1].toLowerCase();
+
+            alert (mismaInicial || mismaFinal ? "Ambos nombres coinciden en la primera o en la última letra" : "No hay coincidencias en la primera o en la última letra");
+
+        </script>
+    </p>
+   <p>
+        <strong>
+            crear un programa que permita al usuario elegir un candidato por el cual votar. Las posibilidades son: candidato A por
+            el partido rojo, candidato B por el partido verde, candidato C por el partido azul. Según el candidato elegido (A, B ó C)
+            se le debe imprimir el mensaje “Usted ha votado por el partido [color que corresponda al candidato elegido]”. Si el
+            usuario ingresa una opción que no corresponde a ninguno de los candidatos disponibles, indicar “Opción errónea”.
+        </strong>
+        <script>
+            var voto = prompt("Elige un cantidato (A, B, C)").toUpperCase();
+
+            if (voto === "A"){
+                alert("Votaste al partido rojo");
+            } else if (voto === "B"){
+                alert("Votaste al partido verde");
+            } else if (voto === "C"){
+                alert("Votaste al partido azul");
+            } else {
+                alert("Opción errónea");
+            }
+        </script>
+    </p>
+   <p>
+        <strong>
+            escribir un programa que solicite al usuario una letra y, si es una vocal, muestre el mensaje “es vocal”. Se debe validar
+            que el usuario ingrese sólo un carácter. Si ingresa un string de más de un carácter, informarle que no se puede
+            procesar el dato. (si length es mayor que 1 va a 0 si no un if con 5 OR con las vocales)
+        </strong>
+        <script>    
+            var letra = prompt("Indique una letra");
+
+            if (letra.length !== 1){
+                alert ("Lo escrito no puede tener más de un caracter");
+            } else if ("aeiou".includes(letra.toLowerCase())){
+                alert ("La letra indicada es vocal");
+            } else {
+                alert ("La letra indicada no es vocal");
+            }
+        </script>
+    </p>
+   <p>
+        <strong>
+            Hacer un programa que permita saber si un año es bisiesto. Para que un año sea bisiesto debe ser divisible por 4 y no
+            debe ser divisible por 100, excepto que también sea divisible por 400.
+        </strong>
+        <script>
+            var anyo = parseInt(prompt("Indique un año:"));
+            var esBisiesto = (anyo % 4 === 0 && anyo % 100 !== 0) || (anyo % 400 === 0);
+            alert (esBisiesto ? "El año indicado es bisiesto" : "El año indicado no es bisiesto");
+        </script>
+    </p>
+   <p>
+        <strong>
+            Pide un número y muestra si es par o impar usando el operador ternario.
+        </strong>
+        <script>
+            var num3 = parseInt(prompt("Indique un número"));
+            alert (num3 % 2 === 0 ? "El número es par" : "El número es impar");
+        </script>
+    </p>
+   <p>
+        <strong>
+            Verifica si una persona puede votar (mayor o igual a 18 años) usando el operador ternario.
+        </strong>
+        <script>
+            var edad2 = parseInt(prompt("Indique su edad"));
+            alert (edad2 >= 18 ? "Puedes votar" : "No puedes votar");
+        </script>
+    </p>
+   <p>
+        <strong>
+            clasificar una nota usando if
+        </strong>
+        <script>
+            var nota = parseFloat(prompt("Indique su nota"));
+
+            if (nota >= 9){
+                alert("Excelente");
+            } else if (nota >= 7){
+                alert("Bien");
+            } else if (nota >= 5){
+                alert("Sufiencite");
+            } else {
+                alert ("Insuficiente");
+            }
+        </script>
+    </p>
+   <p>
+        <strong>
+            clasifica una nota numérica del 0 al 10
+        </strong>
+        <script>
+            var nota2 = parseFloat(prompt("Indique la nota"));
+
+            if (nota2 >= 0 && nota2 <= 4 ){
+                alert ("Insuficiente");
+            } else if (nota2 <= 6){
+                alert ("Suficiente");
+            } else if (nota2 <= 8){
+                alert ("Notable");
+            } else if (nota2 <= 10){
+                alert ("Sobresaliente");
+            } else {
+                alert ("Nota fuera de rango");
+            }
+        </script>
+    </p>
+   <p>
+        <strong>
+            Indica si un número ingresado es positivo, negativo o cero.
+        </strong>
+        <script>
+            var num4 = parseFloat(prompt("Indique un número"));
+
+            if (num4 > 0){
+                alert("El número es positivo");
+            } else if (num4 < 0){
+                alert ("El número es negativo");
+            } else {
+                alert ("El número es cero");
+            }
+        </script>
+    </p>
+   <p>
+        <strong>
+            Validar contraseña Verifica si una contraseña ingresada es igual a "admin123" y muestra un mensaje de acceso
+            concedido o denegado.
+        </strong>
+        <script>
+            const passw = prompt("Indique la contraseña");
+
+            alert (passw === "admin123" ? "Acceso concedido" : "Acceso denegado");
+        </script>
+    </p>
+    <p>
+        <strong>
+            ¿Muestra el nombre del Día de la semana correspondiente a un número del 1 al 7 usando switch.
+        </strong>
+        <script>
+            var dia2 = parseInt(prompt("Indique un número del uno al 7"));
+
+            switch (dia2){
+                case 1: alert("Lunes"); break;
+                case 2: alert("Martes"); break;
+                case 3: alert("Miércoles"); break;
+                case 4: alert("Jueves"); break;
+                case 5: alert("Viernes"); break;
+                case 6: alert("Sábado"); break;
+                case 7: alert("Domingo"); break;
+                default: alert("Número inválido");
+            }
+        </script>
+    </p>
+    <p>
+        <strong>
+            crea una Calculadora básica Dado dos números y una operación (+, -, *, /), muestra el resultado usando switch.
+        </strong>
+        <script>
+            var num5 = parseFloat(prompt("Indique el primer número"));
+            var operacion = prompt("Indique la operación (+, -, *, /):");
+            var num6 = parseFloat(prompt("Indique el segundo número"));
+
+            switch (operacion){
+                case "+": alert ("El resultado es: ",(num5 + num6)); break;
+                case "-": alert ("El resultado es: ",(num5 - num6)); break;
+                case "*": alert ("El resultado es: ",(num5 * num6)); break;
+                case "/": alert ("El resultado es: ",(num5 / num6)); break;
+                default: alert ("Operación inválida");
+            }
+        </script>
+    </p>
+    <p>
+        <strong>
+            crea un Semáforo Dado un color (rojo, amarillo, verde), muestra la acción correspondiente: "Detente",
+            "Precaución" o "Avanza".
+        </strong>
+        <script>
+            var color = prompt("Indique el color del semáforo");
+
+            switch (color){
+                case "rojo": alert("Detente"); break;
+                case "amarillo": alert("Precaución"); break;
+                case "verde": alert("Avanza"); break;
+                default: alert("Color no válido");
+            }
+        </script>
+    </p>
+</body>
+</html>

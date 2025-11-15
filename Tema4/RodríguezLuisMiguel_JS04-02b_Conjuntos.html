@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Luis Miguel Rodríguez Narváez / 04-02b DWEC</h1>
+    <h3>Ejercicio 1</h3>
+    <script>
+        let personajes = new Set(["Ana","Juan","Pedro","Sara"]);
+    </script>
+
+    <h3>Ejercicio 2</h3>
+    <p id="contenidoEj2"></p>
+    <script>
+        for (i of personajes){
+            document.getElementById("contenidoEj2").innerHTML += i + ", ";
+        }
+    </script>
+
+    <h3>Ejercicio 3</h3>
+    <p>Indique el nombre del personaje: <input type="text" id="personaje"></p>
+    <button onclick="mostrarResultado()">
+        Comprobar si está en el conjunto
+    </button>
+    <p id="contenidoEj3"></p>
+    <script>
+        function encontrarPersonaje(nombre,conjunto){
+            return conjunto.has(nombre) ? true : false;
+        }
+
+        function mostrarResultado(){
+            if (encontrarPersonaje(document.getElementById('personaje').value,personajes)){
+                document.getElementById("contenidoEj3").innerHTML = "Encontrado";
+            } else {
+                document.getElementById("contenidoEj3").innerHTML = "No encontrado";
+            }
+        }
+    </script>
+
+    <h3>Ejercicio 4</h3>
+    <button onclick="cantidadElementos(personajes)">Obtener cantidad de elementos</button>
+    <p id="contenidoEj4"></p>
+    <script>
+        function cantidadElementos(conjunto){
+            let arrayIntermedio = [...personajes];
+            document.getElementById("contenidoEj4").innerHTML = arrayIntermedio.length;
+        }
+    </script>
+
+    <h3>Ejercicio 5</h3>
+    <p>Indique un nombre a añadir: <input type="text" id="nuevoPersonaje"></p>
+    <button onclick="anyadirElemento(personajes,document.getElementById('nuevoPersonaje').value)">Añadir nombre</button>
+    <p id="contenidoEj5"></p>
+    <script>
+        function anyadirElemento(conjunto,nombre){
+            let contenido = document.getElementById("contenidoEj5");
+            if (!conjunto.has(nombre)){
+                conjunto.add(nombre)
+                contenido.innerHTML = "";
+
+                for (i of conjunto){
+                    contenido.innerHTML += i + ", ";
+                }
+            } else {
+                contenido.innerHTML = "Elemento repetido";
+            }
+        }
+    </script>
+
+    <h3>Ejercicio 6</h3>
+    <p>Indique un nombre a eliminar: <input type="text" id="personajeEliminar"></p>
+    <button onclick="elminarElemento(personajes,document.getElementById('personajeEliminar').value)">Eliminar</button>
+    <p id="contenidoEj6"></p>
+    <script>
+        function elminarElemento(conjunto,nombre){
+            let contenido = document.getElementById("contenidoEj6");
+
+            if (conjunto.has(nombre)){
+                conjunto.delete(nombre)
+                contenido.innerHTML = '';
+                
+                for (i of conjunto){
+                    contenido.innerHTML += i + ', ';
+                }
+            } else {
+                contenido.innerHTML = "Nombre no encontrado";
+            }
+        }
+    </script>
+</body>
+</html>

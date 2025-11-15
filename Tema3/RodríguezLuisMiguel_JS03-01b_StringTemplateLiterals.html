@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Luis Miguel Rodríguez Narváez / 03-01b DWEC</h1>
+    <h1>Ejercicio 1</h1>
+    <script>
+
+    const nombres = ["Laura García", "José Gómez", "Marta López"];
+    const edades = [29,27,30];
+    const ciudades = ["Madrid", "Málaga", "Barcelona"];
+    const intereses4 = [
+        ["fotografía", "viajes", "tecnología"],
+        ["idiomas", "fotografía", "viajes"],
+        ["botánica", "tecnología", "idiomas"]
+    ]
+    const tarjetas = [];
+
+    for(var i = 0; i < 3; i++){
+        tarjetas[i] = `
+        <div class="tarjeta">
+        <h2>${nombres[i]}</h2>
+        <p>Edad: ${edades[i]}</p>
+        <p>Ciudad: ${ciudades[i]}</p>
+        <h4>Intereses:</h4>
+        <ul>
+        ${intereses4[i].map(interes => `<li>${interes}</li>`).join("")}
+        </ul>
+        </div>
+        `;
+    }
+
+    document.writeln(tarjetas[0]);
+    document.writeln(tarjetas[1]);
+    document.writeln(tarjetas[2]);
+</script>
+
+<h1>Ejercicio 2</h1>
+<p>Indique el producto: <input type="text" name="producto" id="producto"></p>
+<p>Indique el precio: <input type="text" name="precio" id="precio"></p>
+<p>Indique la marca: <input type="text" name="marca" id="marca"></p>
+<input type="button" name="button" value="Pulsa para obtener la descripción" onclick="crearDescripcion();">
+<p id="cadenaej2"></p>
+<script>
+    function crearDescripcion(){
+        const producto = document.getElementById("producto").value;
+        const precio = Number(document.getElementById("precio").value);
+        const marca = document.getElementById("marca").value;
+
+        var cadena = `Los ${producto} de la marca ${marca} cuestan ${precio}€`;
+
+        document.getElementById("cadenaej2").innerHTML = cadena;
+    }
+</script>
+
+<h1>Ejercicio 3</h1>
+<p id="ej3nombre">El nombre sin espacios extra:</p>
+<p id="ej3nombreMayus">El nombre con las primeras letras en mayúscula:</p>
+<p id = "ej3mensaje">Mensaje:</p>
+<p id="ej3mensajeMayus">Mensaje en mayúscula:</p>
+<script>
+    let nombre = " juan pérez ";
+    const producto = "Teclado mecánico RGB";
+    const fecha = "09/10/2025";
+
+    nombre = nombre.trim();
+    document.getElementById("ej3nombre").innerHTML += ` ${nombre}`;
+
+    
+    let nombreArray = nombre.split(" ");
+    nombreArray = nombreArray.map(function(palabra) {
+    return palabra[0].toUpperCase() + palabra.slice(1);
+    });
+    let nombreMayus = nombreArray.join(" ");
+    document.getElementById("ej3nombreMayus").innerHTML += ` ${nombreMayus}`;
+
+    let mensaje = `Hola ${nombreMayus}, tu pedido del producto ${producto} se enviará el ${fecha}.`;
+    document.getElementById("ej3mensaje").innerHTML += ` ${mensaje}`;
+    
+    let mensajeMayus = mensaje.toUpperCase();
+    document.getElementById("ej3mensajeMayus").innerHTML += ` ${mensajeMayus}`;
+</script>
+
+<h1>Ejercicio 4</h1>
+<p>Nombres formateados en forma de lista no ordenada:</p>
+<p id="contenidoEj4"></p>
+<script>
+    const usuarios = [" ana ", "PEDRO", "maria "];
+
+    function formatear(nombre){
+        nombre = nombre.trim().toLowerCase();
+        return nombre.charAt(0).toUpperCase() + nombre.slice(1);
+    }
+
+    const contenidoEj4 = 
+    `<ul>${usuarios.map(usuario => `<li>${formatear(usuario)}</li>`).join("\n ")}</ul>`;
+
+    document.getElementById("contenidoEj4").innerHTML = contenidoEj4;
+</script>
+
+<h1>Ejercicio 5</h1>
+<button onclick="mostrarMensaje()">Mostrar mensaje</button>
+<p id="mensajeEj5"></p>
+<button onclick="mostrarLongitud()">Mostrar longutid del mensaje</button>
+<p id="tamañoMensaje"></p>
+<button onclick="verificarEj5()">Verificar si contiene ficción</button>
+<p id="verificación"></p>
+<button onclick="reemplazar()">Reemplazar ficción por aventuras</button>
+<p id="reemplazar"></p>
+<button onclick="pasarAMayuscula()">Pasar a mayúscula</button>
+<button onclick="pasarAMinuscula()">Pasar a minúscula</button>
+
+
+<script>
+    const nombreEj5 = "Lucía";
+    const hobby = "leer libros de ciencia ficción";
+    let mensajeEj5 = ` A ${nombreEj5} le encanta ${hobby}`;
+    
+
+    function mostrarMensaje(){
+        document.getElementById("mensajeEj5").innerHTML = mensajeEj5;
+    }
+
+    function mostrarLongitud(){
+        document.getElementById("tamañoMensaje").innerHTML = 
+        `El mensaje tiene ${mensajeEj5.replace(/\s+/g, '').length} letras`;
+    }
+    
+        
+    function verificarEj5(){
+        let confirmacion;
+
+        if (mensajeEj5.includes("ficción")){
+            confirmacion = "El mensaje contiene la palabra ficción";
+        } else {
+            confirmacion = "El mensaje no contiene la palabra ficción";
+        }
+        document.getElementById("verificación").innerHTML = confirmacion;
+    }
+
+    function reemplazar(){
+        if (mensajeEj5.toLowerCase().includes("ficción")){
+            mensajeEj5 = mensajeEj5.replace("ciencia ficción","aventuras");
+        } else {
+            mensajeEj5 = mensajeEj5.replace("aventuras","ciencia ficción");
+        }
+        
+        mostrarMensaje();
+    }
+
+    function pasarAMayuscula(){
+        mensajeEj5 = mensajeEj5.toUpperCase();
+        mostrarMensaje();
+    }
+
+    function pasarAMinuscula(){
+        mensajeEj5 = mensajeEj5.toLowerCase();
+        mostrarMensaje();
+    }
+</script>
+</body>
+</html>

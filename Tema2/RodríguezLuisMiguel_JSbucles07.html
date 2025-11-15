@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Luis Miguel Rodríguez Narváez / Práctica 02-07 bucles</h1>
+   <h3>Ejercicio 1</h3>
+    <p>La palabra repetida 10 veces:</p>
+    <script>
+        var palabra = prompt("Escriba una palabra y se repetirá 10 veces:");
+        for (var i = 0; i < 10; i++){
+            document.writeln(palabra);
+        }
+    </script>
+
+
+    <h3>Ejercicio 2</h3>
+    <p>Todos los años que has cumplido desde el primero:</p>
+    <script>
+        var edad = parseInt(prompt("Indique su edad:"))
+        var num = 1;
+
+        while (num <= edad) {
+            document.writeln(num);
+            num += 1;
+        }
+
+    </script>
+
+    <h3>Ejercicio 3</h3>
+    <script>
+        var num2 = parseInt(prompt("Indique un número entero positivo para ver los impares que lo separan del cero:"));
+        num = 1;
+        document.writeln("Todos los números impares desde 1 hasta ese número:<br>")
+        do {
+            document.writeln(num,);
+            num += 2;
+
+            if (num <= num2){
+                document.writeln(" , ");
+            }
+        } while (num <= num2);
+
+    </script>
+
+    <h3>Ejercicio 4</h3>
+    <script>
+        var num2 = parseInt(prompt("Indique un número entero positivo para ver su cuenta atrás hasta cero:"));
+        document.writeln("La cuenta atrás desde ese número hasta cero:");
+        for (var i = num2; i >= 0; i--){
+            document.writeln(i);
+
+            if (i > 0){
+                document.writeln(" , ");
+            }
+        }
+
+
+    </script>
+
+    <h3>Ejercicio 6</h3>
+    <script>
+        num = parseInt(prompt("Indique un número entero positivo para generar un triángulo con esa altura:"));
+        document.writeln("Un triángulo rectángulo de altura ",num,"<br>");
+        for (var i = 1; i <= num; i++){
+            for (var j = 1; j <= i; j++){
+                document.writeln("*");
+            }
+
+            document.writeln("<br>");
+        }
+    </script>
+
+    <h3>Ejercicio 7</h3>  
+    <script>
+        document.writeln("La tabla de multiplicar del 10:<br>");
+
+        for (var i = 1; i <= 100; i+=10){
+            document.write(i,"<br>");
+        }
+
+    </script>
+
+    <h3>Ejercicio 8</h3>  
+    <script>
+        num = parseInt(prompt("Indique un número entero positivo:"));
+
+        for (var i = 1; i <= num; i+=2){
+            document.write(i, ' ');
+            for (var j = i-2; j >= 1; j-=2){
+                if (i > 1){
+                    document.write(j, ' ');
+                }
+            }
+            document.writeln('<br>');
+        }
+
+    </script>
+
+    <h3>Ejercicio 9</h3> 
+    <script>
+        var password = prompt("Indique una contraseña: ");
+
+        do {
+            var intento = prompt("Escriba de nuevo la contraseña:");
+
+            if (intento.localeCompare(password) == 0){
+                alert("Contraseña correcta.");
+                document.write("Contraseña correcta.");
+            } else {
+                alert("Lo escrito no coincide con la contraseña, inténtelo de nuevo.");
+            }
+        } while (intento.localeCompare(password) != 0);
+
+            intento.localeCompare
+
+    </script>
+
+    <h3>Ejercicio 10</h3>
+    <script>
+        num = parseInt(prompt("Indique un número entero positivo para saber si es primo o no:"));
+        var esPrimo = true;
+        num2 = 2;
+        do {
+            if (num % num2 == 0) {
+                esPrimo = false;
+            }
+            
+            ++num2;
+            
+        } while (esPrimo && num2 < num);
+
+        if (esPrimo){
+            document.writeln("El número indicado es primo.");
+        } else {
+            document.writeln("El número indicado no es primo.");
+        }
+
+    </script>
+
+    <h3>Ejercicio 11</h3>
+    <script>
+        var palabra = prompt("Escriba una palabra y esta se dividirá por cada una de sus letras: ");
+        document.writeln("La palabra escrita dividida en letras de la última a la primera:<br>");
+        for (var i = palabra.length - 1; i >= 0; i--){
+            document.writeln(palabra[i],"<br>");
+        }
+
+    </script>
+
+    <h3>Ejercicio 12</h3>
+    <script>
+        var frase = prompt("Escriba una frase:");
+        var letra = prompt("Escriba una letra:");
+        var numVeces = 0;
+
+        for (var i = 0; i < frase.length; i++){
+            if(frase[i] == letra){
+                numVeces++;
+            }
+        }
+
+        document.writeln("La letra ",letra," aparece un total de ",numVeces, " veces en la frase: ",frase);
+
+    </script>
+
+    <h3>Ejercicio 13</h3>
+    <script>
+        alert("Escribe palabras y estas se repetirán hasta que escribas salir");
+        do{
+            var input = prompt();
+            if (input.toLowerCase() !== "salir"){
+                document.write(input,"<br>");
+            }
+        } while(input.toLowerCase() !== "salir");
+
+
+    </script>
+    
+</body>
+</html>

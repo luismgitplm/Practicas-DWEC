@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Ejercicio 1</h3>
+   <!-- <script>
+        var cadena = prompt("Escriba una palabra o frase");
+        document.writeln("La longitud de la cadena: ",cadena," es: ",cadena.length);
+    </script>
+
+    <h3>Ejercicio 2</h3>
+    <script>
+       var cadena2 = prompt("Escriba una palabra o frase");
+       var charMitad = cadena2.charAt(Math.round(cadena2.length / 2)); 
+       document.writeln("El caracter que se encuentra en la mitad de esa cadena es: ",charMitad);
+    </script>
+
+    <h3>Ejercicio 3</h3>
+    <script>
+        document.writeln("Su código unicode es: ",cadena2.charCodeAt(Math.round(cadena2.length / 2)));
+    </script>
+
+    <h3>Ejercicio 4</h3>
+    <script>
+        var cadena3 = prompt("Escriba una palabra o frase");
+        var cadena4 = prompt("Escriba una segunda palabra o frase");
+        document.writeln("La unión de esas dos cadenas es: ", cadena3.concat(cadena4));
+    </script>
+
+    <h3>Ejercicio 5</h3>
+    <script>
+        var num = parseInt(prompt("Escribe un número entero"));
+        while (Number.isNaN(num)){
+            num = parseInt(prompt("No ha escrito un número, inténtelo de nuevo"));
+        }
+
+        document.writeln("El código unicode del número indicado es: ",String.fromCharCode(num));
+    </script>
+
+    <h3>Ejercicios 6 y 7</h3>
+    <script>
+        var caracter = prompt("Escriba un caracter");
+        var cadena5 = prompt("Escriba una cadena de caracteres");
+        document.writeln("La primera aparición del caracter ",caracter, " en la cadena ",cadena5, " es: ",cadena5.indexOf(caracter), "<br>");
+        document.writeln("La última aparición del caracter ",caracter, " en la cadena ",cadena5, " es: ",cadena5.lastIndexOf(caracter));
+    </script>
+
+    <h3>Ejercicio 8</h3>
+    <script>
+        cadena = "<br>Los temas son tema 1, tema 3, tema 5 y tema 6";
+        //expresion = /(capítulo \d+(\.\d)*)/i;
+        expresion = /(tema \d+)/i;
+        hallado = cadena.match(expresion);
+        document.write( cadena + "<br> expresion en "+hallado[1]);
+    </script>
+    <p>La variable expresion es una expresión regular que se utiliza para ver si hay partes de la variable cadena que coinciden con ella.</p>
+    <p>La variable hallado es un array de cadenas que contiene las coincidencias resultantes de comparar la cadena principal con la expresión.</p>    
+
+
+    <h3>Ejercicio 9</h3>
+    <script>
+        var cadena6 = prompt("Escribe una cadena: ");
+        var cadena7 = prompt("Escribe una segunda cadena: ");
+        var reemplazo = cadena7.replace(cadena7.charAt(0),cadena6)
+        document.writeln("Ahora escribiré la segunda entrada, que ha visto su primer caracter reemplazado por la primera cadena: ",reemplazo);
+    </script>
+
+    <h3>Ejercicio 10</h3>
+    <script>
+        var cadena7 = prompt("Escribe una cadena de caracteres:");
+        document.writeln("La primera mitad de la cadena extraída es: ", cadena7.slice(0,Math.round(cadena7.length / 2)));
+
+    </script>-->
+
+    <h3>Ejercicio 11</h3>
+    <script>
+        var cadena8  = prompt("Escribe una cadena de caracteres que será dividida en un array con las distintas palabras:");
+        const subcadenas = cadena8.split(" ");
+
+        document.writeln("Aquí las distintas palabras de la cadena: <br>");
+        for (var i = 0; i < subcadenas.length; i++){
+            document.write(subcadenas[i],"<br>");
+        }
+    </script>
+
+    <h3>Ejercicio 12</h3>
+    <script>
+        var cadena9 = prompt("Escribe una cadena a la que se le extraerá un número determinado de caracteres");
+        var numPosicion = parseInt(prompt("Indique el número de la posición de inicio por donde se comenzará a extraer: "));
+        var numCaracteres = parseInt(prompt("Indique el número de caracteres que se extraerá de la cadena: "));
+
+        document.writeln("Los caracteres extraídos de la cadena son:", cadena9.substr(numPosicion,numCaracteres));
+    </script>
+</body>
+</html>

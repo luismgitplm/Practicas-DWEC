@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-01</title>
+</head>
+<body>
+    <h1>Luis Miguel Rodríguez Narváez / 04-01 DWEC</h1>
+    <h3>Ejercicio 1: Generar 50 números aleatorios en indicar
+        mayor, menor y media
+    </h3>
+    <script>
+        const numeros = new Array();
+        let menor = 100;
+        let mayor = 0;
+        let sumatorio = 0;
+
+        for (let i = 0; i<50; i++){
+            numeros[i] = Math.round(Math.random()*100);
+            num = numeros[i];
+            menor = num<menor ? num:menor;
+            mayor = num>mayor ? num:mayor;
+            sumatorio += num;
+            document.writeln(num);
+        }
+        let media = sumatorio / 50;
+
+        document.writeln(`El mayor es: ${mayor}, El menor es: ${menor}, 
+        La media es: ${media}`);
+    </script>
+
+    <h3>Ejercicio 2: Moda y mediana</h3>
+    <script>
+        numeros.sort();
+        for (let i = 1; i <= 50; i++){
+            document.writeln(numeros[i]);
+        }
+        let numAnterior = numeros[0];
+        let modaMax = 1;
+        let moda = 1;
+        let numModa = numeros[0];
+
+        for (let i = 1; i <= 50; i++){
+            num = numeros[i];
+            if (num == numAnterior){
+                moda++;
+            } else {
+                if (moda>modaMax){
+                    modaMax = moda;
+                    numModa = numAnterior;
+                }
+                moda = 1;
+            } 
+            numAnterior = num;
+        }
+
+        document.writeln(`La moda es: ${numModa}`);
+    </script>
+
+    <h3>Ejercicio 3</h3>
+    <br><h2> Ejercicio Arrays </h2>
+    <p> Array X <input type="text" size ="60" name="caja1" value ="X1,X2,X3,X4,X5"> </p>
+    <p> <input type="button" name="button" value="Add Array" onclick="addArrays();" > </p>
+    <hr> <p id="explica"></p> <h2 id="tamano"></h2>
+    <br>
+    <script language="JavaScript">
+        var arrayX= new Array();
+        var arraymix= new Array();
+        function addArrays() {
+        arrayXstr = document.getElementsByName("caja1")[0].value;
+        arrayX=arrayXstr.split(',');
+        lX =arrayX.length;
+        for (var i=0; i< lX;i++ ) { arraymix.push(arrayX[i]);}
+        contenidostr = "El contenido del array es " + arraymix.join('-');
+        tamanostr = "El tamano del array es " + arraymix.length;
+        //alert(contenidostr);
+        document.getElementById("explica").innerHTML=contenidostr;
+        document.getElementById("tamano").innerHTML=tamanostr;
+        }
+    </script>
+
+    <h3>Ejercicio 4</h3>
+
+    <p>Escriba un texto: <input type="text" name="textoEj4" id="textoEj4"></p>
+    <p><input type="button" name="button" value="Pulse para unir el texto a un array" onclick="unirArray();"></p>
+    <p id="contenidoEj4"></p>    
+    
+    <script>
+        let array = [];
+        function unirArray(){
+            let cadena = document.getElementById("textoEj4").value;
+            array.push(cadena);
+            document.getElementById("contenidoEj4").innerHTML = array.join(", ");;
+        }
+
+        
+    </script>
+
+    <h3>Ejercicio 7</h3>
+    <script>
+        var vector1 = ["elemento1","elemento2","elemento3","elemento4"];
+        var vector2 = ["elemento5","elemento6","elemento7","elemento8"];
+        var vector3 = [];
+
+        for (var i = 0; i < vector1.length; i++){
+            vector3.push(vector1[i]);
+            vector3.push(vector2[i]);
+        }
+
+       for (var i = 0; i < vector3.length; i++){
+            document.writeln(vector3[i]);
+       }
+
+
+    </script>
+
+    <h3>Ejercicio 8</h3>
+    <script>
+        var vectorx = ["x1","x2","x3","x4"];
+        var vectory = ["y1","y2","y3"];
+        var vectorz = ["z1","z2","z3","z4","z5"];
+        var vectorFinal = [];
+
+        for (var i = 0; i < Math.max(vectorx.length,vectory.length,vectorz.length); i++){
+            if (!!vectorx[i]){
+                vectorFinal.push(vectorx[i]);
+            }
+
+            if (!!vectory[i]){
+                vectorFinal.push(vectory[i]);
+            }
+
+            if (!!vectorz[i]){
+                vectorFinal.push(vectorz[i]);
+            }
+        }
+
+        for (var i = 0; i < vectorFinal.length; i++){
+            document.writeln(vectorFinal[i]);
+        }
+    </script>
+
+</body>
+</html>
