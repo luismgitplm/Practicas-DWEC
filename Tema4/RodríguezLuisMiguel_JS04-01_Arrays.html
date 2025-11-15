@@ -83,17 +83,19 @@
     <h3>Ejercicio 4</h3>
 
     <p>Escriba un texto: <input type="text" name="textoEj4" id="textoEj4"></p>
-    <p><input type="button" name="button" value="Pulse para unir el texto a un array" onclick="unirArray();"></p>
+    <p><input type="button" name="button" value="Pulse para unir el texto a un array" id="botonEj4"></p>
     <p id="contenidoEj4"></p>    
     
     <script>
         let array = [];
-        function unirArray(){
-            let cadena = document.getElementById("textoEj4").value;
+        let btn4 = document.querySelector("#botonEj4");
+        let contenidoEj4 = document.querySelector("#contenidoEj4");
+        
+        btn4.addEventListener("click", () =>{
+            let cadena = document.querySelector("#textoEj4").value;
             array.push(cadena);
-            document.getElementById("contenidoEj4").innerHTML = array.join(", ");;
-        }
-
+            contenidoEj4.innerHTML = array.join(", ");
+        })
         
     </script>
 
