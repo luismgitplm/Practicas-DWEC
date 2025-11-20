@@ -30,5 +30,77 @@
         empleados2.push("Y","Z");
         conten2.innerHTML += empleados2.join(",");
     </script>
+
+    <h3>Ejercicio 3</h3>
+    <p id="contenidoEj3"></p>
+
+    <script>
+        const calificaciones = [10,11,12,13,14,15,16,17,18,19,20];
+
+        calificaciones.fill(99,4,8);
+        calificaciones.unshift(5,6,7);
+        calificaciones.pop();
+        calificaciones.shift();
+
+        document.querySelector("#contenidoEj3").innerHTML = calificaciones.join(", ");
+    </script>
+
+    <h3>Ejercicio 4</h3>
+    <p id="contenidoEj4"></p>
+
+    <script>
+        const precios = [100,200,300,400];
+
+        precios.push(500,600);
+        precios.shift();
+        const precios2 = precios.with(2,999);
+        const precios3 = [700,800,900];
+        const precios4 = precios2.concat(precios3);
+        
+        document.querySelector("#contenidoEj4").innerHTML = precios4.join(", ");
+
+    </script>
+
+    <h3>Ejercicio 5</h3>
+    <p id="contenidoEj5"></p>
+
+    <script>
+        const caracteres = Array.from("hello world");
+        const cont5 = document.querySelector("#contenidoEj5");
+
+        let quintoCaracter = caracteres.at(4);
+        let ultimoCaracter = caracteres.at(caracteres.length - 1);
+
+        cont5.innerHTML = "El quinto caracter es: " + quintoCaracter + 
+            " / El último caracter es: " + ultimoCaracter;
+
+        caracteres.unshift('#');
+        caracteres2 = caracteres.concat(Array.from('!!!'));
+
+        cont5.innerHTML += "<br>" + caracteres2.join(", ");
+    </script>
+
+    <h3>Ejercicio 6</h3>
+    <p id="contenidoEj6"></p>
+
+    <script>
+        const pedidos = [1,2,3,4,5,6];
+        const cont6 = document.querySelector("#contenidoEj6");
+        let tercerPedido = pedidos.at(2);
+        let ultimoPedido = pedidos.at(pedidos.length - 1);
+
+        cont6.innerHTML = "El número del tercer pedido es: " + tercerPedido +
+            " / El número del último pedido es: " + ultimoPedido;
+
+        const pedidos2 = pedidos.with(0,0);
+        pedidos2.fill(8,1,4);
+        pedidos2.shift();
+        pedidos2.pop();
+        pedidos2.push(7,8,9);
+
+        cont6.innerHTML += "<br>" + pedidos2.join(", ");
+
+    </script>
+
 </body>
 </html>
