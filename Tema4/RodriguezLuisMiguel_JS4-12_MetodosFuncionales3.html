@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Luis Miguel Rodríguez Narváez / 04-12 DWEC</h1>
+    <h3>Ejercicio 1</h3>
+    <p id="cont1"></p>
+
+    <script>
+        const productos = ["manzana","naranja","plátano","pera"];
+        const cont1 = document.querySelector("#cont1");
+
+        if (productos.includes("naranja")){
+            cont1.innerHTML = "\"naranja\" está en el inventario";
+        } else {
+            cont1.innerHTML = "\"naranja\" no está en el inventario";
+        }
+
+        if (productos.includes("mango",2)){
+            cont1.innerHTML += "<br> \"mango\" está en el inventario desde el índice 2";
+        } else {
+            cont1.innerHTML += "<br> \"mango\" no está en el inventario desde el índice 2";
+        }
+    </script>
+
+    <h3>Ejercicio 2</h3>
+    <p id="cont2"></p>
+
+    <script>
+        const data = [1,2,3];
+        document.querySelector("#cont2").innerHTML = Array.isArray(data);
+    </script>
+
+    <h3>Ejercicio 3</h3>
+    <p id="cont3"></p>
+
+    <script>
+        const campos = [true,true,false,true];
+        const cont3 = document.querySelector("#cont3");
+
+        if (campos.every(campo => campo)){
+            cont3.innerHTML = true + ", no hay campos vacíos";
+        } else {
+             cont3.innerHTML = false + ", aún hay campos vacíos";
+        }
+    </script>
+
+    <h3>Ejercicio 4</h3>
+    <p id="cont4"></p>
+
+    <script>
+        const permisos = [false,false,true,false];
+        const cont4 = document.querySelector("#cont4");
+
+        if (permisos.some(permiso => permiso)){
+            cont4.innerHTML = true + ", al menos un usuario tiene permisos";
+        } else {
+            cont4.innerHTML = false + ", ningún usuario tiene permisos";
+        }
+    </script>
+
+    <h3>Ejercicio 5</h3>
+    <p id="cont5"></p>
+
+    <script>
+        const stock = [15,7,25,5];
+        document.querySelector("#cont5").innerHTML = 
+            "El primer producto con stock menor a 10 es: " + stock.find(cantidad => cantidad < 10);
+    </script>
+
+    <h3>Ejercicio 6</h3>
+    <p id="cont6"></p>
+
+    <script>
+        const prioridades = ["baja","media","alta","baja"];
+        document.querySelector("#cont6").innerHTML = 
+            prioridades.findLast(prioridad => prioridad === "alta") + ", es el último pedido urgente";
+    </script>
+
+    <h3>Ejercicio 7</h3>
+    <p id="cont7"></p>
+
+    <script>
+        const precios = [100,50,30,150];
+        document.querySelector("#cont7").innerHTML = 
+            "El índice del primer producto en oferta es: " + precios.findIndex(precio => precio < 50);
+    </script>
+</body>
+</html>
