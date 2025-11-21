@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Luis Miguel Rodríguez Narváez 04-11 DWEC</h1>
+    <h3>Ejercicio 1</h3>
+    <p id="cont1"></p>
+
+    <script>
+        const filas = [10,20,30,40,50]
+        filas.copyWithin(0,2,5);
+        filas.reverse();
+        const segmento = filas.slice(0,3);
+
+        document.querySelector("#cont1").innerHTML = segmento.join(", ");
+    </script>
+
+    <h3>Ejercicio 2</h3>
+    <p id="cont2"></p>
+
+    <script>
+        const cont2 = document.querySelector("#cont2");
+        const productos = ["manzana","naranja","plátano"];
+        const entradas = productos.entries();
+
+        for (let x of entradas){
+            cont2.innerHTML += "Producto " + x[0] + " : " + x[1] + "<br>"
+        }
+
+        const claves = productos.keys();
+
+        cont2.innerHTML += "Claves de productos: ";
+        for (let x of claves){
+            cont2.innerHTML += x + " ";
+        }
+    </script>
+
+    <h3>Ejercicio 3</h3>
+    <p id="cont3"></p>
+
+    <script>
+        const calificaciones = [85,75,95,65,90];
+        const valores = calificaciones.values();
+        calificaciones.sort((a,b) => {return b - a} );
+
+        document.querySelector("#cont3").innerHTML = calificaciones.slice(0,3).join(", ");
+    </script>
+
+    <h3>Ejercicio 4</h3>
+    <p id="cont4"></p>
+
+    <script>
+        const numPedidos = [1003,1001,1002,1005,1004];
+        numPedidos.sort().reverse();
+        
+        document.querySelector("#cont4").innerHTML = numPedidos.slice(0,3).join(",");
+    </script>
+
+    <h3>Ejercicio 5</h3>
+    <p id="cont5"></p>
+
+    <script>
+        const idEmpleados = [300,200,400,100];
+        const idOrdenados = idEmpleados.toSorted();
+        const idOrdenadosInvertidos = idOrdenados.toReversed();
+
+        document.querySelector("#cont5").innerHTML = idOrdenadosInvertidos.slice(0,2).join(", ");
+    </script>
+
+    <h3>Ejercicio 6</h3>
+    <p id="cont6"></p>
+
+    <script>
+        const precios = [50,30,20,10,40];
+        precios.copyWithin(4,2,3);
+        precios.sort()
+
+        document.querySelector("#cont6").innerHTML = precios.slice(0,3).join(", ")
+    </script>
+
+    <h3>Ejercicio 7</h3>
+    <p id="cont7"></p>
+
+    <script>
+        const configuraciones = ["pantalla completa","sonido activado","modo oscuro"];
+        const claves7 = configuraciones.keys();
+        const valores7 = configuraciones.values();
+
+        for (let x of claves7){
+            document.querySelector("#cont7").innerHTML += "Clave " + x + ": " + configuraciones[x] + "<br>";
+        }
+    </script>
+
+    <h3>Ejercicio 8</h3>
+    <p id="cont8"></p>
+
+    <script>
+        const comentarios = [5003,5001,5002,5005,5004];
+        const comentariosOrdenados = comentarios.toSorted();
+        comentariosOrdenados.reverse();
+
+        document.querySelector("#cont8").innerHTML = comentariosOrdenados.slice(0,2).join(", ");
+    </script>
+</body>
+</html>
