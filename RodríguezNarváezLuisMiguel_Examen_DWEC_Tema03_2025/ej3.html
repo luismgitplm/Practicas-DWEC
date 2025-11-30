@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Location Navigator</title>
+</head>
+<body>
+<div> Number. Location Navigator. Crea un script que tome dos datos latitud y longitud de un formulario y los
+        valores latitud y longitud del objeto navigator. Con el teorema de pitagoras Distancia = raiz (Lat2 +Long2) y
+        Asumiendo que un grado terrestre es aproximadamente 111 km calcula la distancia a ese lugar. </div>
+
+<h2>Distancia respecto a tu ubicación</h2>
+
+<form onsubmit="calcular(); return false;">
+    <label>Latitud destino:
+        <input type="number" id="latDestino" step="0.0001" required>
+    </label><br><br>
+
+    <label>Longitud destino:
+        <input type="number" id="lonDestino" step="0.0001" required>
+    </label><br><br>
+
+    <button type="submit">Calcular distancia</button>
+</form>
+
+<p id="resultado"></p>
+
+<script>
+function calcular() {
+
+    // 1. Obtener datos del formulario
+    const lat2 = parseFloat(document.getElementById("latDestino").value);
+    const lon2 = parseFloat(document.getElementById("lonDestino").value);
+
+    // 2. Obtener ubicación actual del usuario
+    navigator.geolocation.getCurrentPosition(function(pos) {
+
+        const lat1 = pos.coords.latitude;
+        const lon1 = pos.coords.longitude;
+
+        // 3. Diferencias
+        const difLat = lat2 - lat1;
+        const difLon = lon2 - lon1;
+
+        // 4. Distancia usando pitágoras aproximado
+        const distanciaGrados = Math.sqrt(difLat * difLat + difLon * difLon);
+
+        // 5. Convertir grados a km
+        const distanciaKm = distanciaGrados * 111;
+
+        // Mostrar resultado
+        document.getElementById("resultado").textContent =
+            "Distancia aproximada: " + distanciaKm.toFixed(2) + " km";
+
+    }, function(err) {
+        document.getElementById("resultado").textContent =
+            "No se pudo obtener la ubicación: " + err.message;
+    });
+}
+</script>
+
+</body>
+</html>
