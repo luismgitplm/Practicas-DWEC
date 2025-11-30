@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Rotación de imágenes</title>
+</head>
+<body>
+
+<h2>Rotación de Imágenes</h2>
+
+<div id="contenedor"></div>
+
+<button onclick="rotarDerecha()">Rotar Derecha</button>
+<button onclick="rotarIzquierda()">Rotar Izquierda</button>
+
+<script>
+
+for (let i = 0; i < 5; i++) {
+    let img = document.createElement("img");
+    img.src = "numeros2/" + i + ".jpg";
+    img.width = 80;
+    document.getElementById("contenedor").appendChild(img);
+}
+
+// ------------------------
+// ROTAR A LA DERECHA
+// ------------------------
+function rotarDerecha() {
+    let total = document.images.length;
+
+    let ultima = document.images[total - 1].src;
+
+    for (let i = total - 1; i > 0; i--) {
+        document.images[i].src = document.images[i - 1].src;
+    }
+
+    document.images[0].src = ultima;
+}
+
+// ------------------------
+// ROTAR A LA IZQUIERDA
+// ------------------------
+function rotarIzquierda() {
+    let total = document.images.length;
+
+    let primera = document.images[0].src;
+
+    for (let i = 0; i < total - 1; i++) {
+        document.images[i].src = document.images[i + 1].src;
+    }
+
+    document.images[total - 1].src = primera;
+}
+</script>
+
+</body>
+</html>
