@@ -89,5 +89,46 @@
         document.querySelector("#cont7").innerHTML = 
             "El índice del primer producto en oferta es: " + precios.findIndex(precio => precio < 50);
     </script>
+
+    <h3>Ejercicio 8</h3>
+    <p id="cont8"></p>
+
+    <script>
+        const clientes = ['regular','VIP','regular','VIP'];
+        document.querySelector("#cont8").innerHTML = 
+            "El índice del último cliente con estatus VIP es: " + clientes.findLastIndex(cliente => cliente === "VIP");
+    </script>
+
+    <h3>Ejercicio 9</h3>
+    <p id="cont9"></p>
+
+    <script>
+        const productos9 = ["manzana", "naranja", "plátano"];
+        document.querySelector("#cont9").innerHTML = 
+            "El índice del producto plátano es: " + productos9.indexOf("plátano");
+        
+        document.querySelector("#cont9").innerHTML += "<br>" + 
+            "El último índice del producto manzana es: " + productos9.lastIndexOf("manzana");
+    </script>
+
+    <h3>Ejercicio 10</h3>
+    <p id="cont10"></p>
+
+    <script>
+        const roles = ["usuario", "usuario", "admin", "moderador"];
+        
+        if (roles.includes("admin")){
+            document.querySelector("#cont10").innerHTML = 
+                "Hay un administrador";
+        }
+
+        if (roles.some(rol => rol === "admin")){
+            document.querySelector("#cont10").innerHTML += 
+                "<br>Hay almenos un usuario administrador"
+        }
+
+        roles.includes("admin");
+         
+    </script>
 </body>
 </html>

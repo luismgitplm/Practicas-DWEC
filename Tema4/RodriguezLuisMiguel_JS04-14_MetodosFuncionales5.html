@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Luis Miguel Rodríguez Narváez / 04-14 DWEC</h1>
+    <h3>Ejercicio 1</h3>
+    <p id="cont1"></p>
+    
+    <script>
+        const ventas = [100, 200, 300, 400];
+        const totalVentas = ventas.reduce((acumulador, venta) => acumulador + venta, 0);
+        
+        document.getElementById("cont1").innerHTML = 
+            "El total de ventas con reduce: " + totalVentas;
+    </script>
+
+    <h3>Ejercicio 2</h3>
+    <p id="cont2"></p>
+
+    <script>
+        const empleados = ["Juan", "María", "Pedro", "Luis"];
+        const nombresInvertidos = empleados.reduceRight((acumulador, nombre) => acumulador + " " + nombre);
+        
+        document.getElementById("cont2").innerHTML = 
+            "Los nombres invertidos con reduceRight: " + nombresInvertidos;
+    </script>
+
+    <h3>Ejercicio 3</h3>
+    <p id="cont3"></p>
+
+    <script>
+        const cantidades = [5, 10, 20, 15];
+        const totalProductos = cantidades.reduce((acumulador, cantidad) => acumulador + cantidad, 0);
+        
+        document.getElementById("cont3").innerHTML = 
+            "El total de productos en el inventario: " + totalProductos;
+    </script>
+
+    <h3>Ejercicio 4</h3>
+    <p id="cont4"></p>
+
+    <script>
+        const palabras = ["JavaScript", "es", "increíble"];
+        const oracion = palabras.join(" ");
+        
+        document.getElementById("cont4").innerHTML = 
+            "La oracion concatenada con join y espacios: " + oracion;
+    </script>
+</body>
+</html>
