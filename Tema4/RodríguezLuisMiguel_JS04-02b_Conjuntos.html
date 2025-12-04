@@ -90,5 +90,39 @@
             }
         }
     </script>
+
+    <h3>Ejercicio 7</h3>
+    <p>Indique nombres para generar otro conjunto que se unirá al existente: <input type="text" id="nuevoSet"></p>
+    <button id="unir">Unir conjuntos</button>
+    <p id="cont7"></p>
+
+    <script>
+        let textoInput7;
+        let nuevoSet;
+        let cont7 = document.getElementById("cont7");
+
+        document.getElementById("nuevoSet").addEventListener("change", () => {
+            textoInput7 = document.getElementById("nuevoSet").value;
+        })
+
+        document.getElementById("unir").addEventListener("click", () => {
+            nuevoSet = new Set(textoInput7.split(" "));
+            cont7.innerHTML = '';
+
+            for (i of nuevoSet){
+                if (personajes.has(i)){
+                    nuevoSet.delete(i);
+                    cont7.innerHTML = "Se han eliminado los elementos repetidos<br>";
+                } else {
+                    personajes.add(i);
+                }
+            }
+
+            for (i of personajes){
+                cont7.innerHTML += `${i}, `;
+            }
+        })
+
+    </script>
 </body>
 </html>
