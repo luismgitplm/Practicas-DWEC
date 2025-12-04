@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Luis Miguel Rodríguez Narváez / 2ºDAW</h1>
+
+ <h2> 1. FECHAS - Diferencia desglosada entre fechas</h2>
+Crea un formulario con un selector de fecha.
+Cuando el usuario elija una fecha, el programa debe mostrar cuántos años, meses y días han pasado desde esa fecha hasta hoy.
+<br> 
+<input type="date" id="fecha"> <br> 
+<button onclick="calcular1()">Calcular</button><br> 
+
+<p id="resultado"></p>
+
+<script>
+function calcular1(){
+    
+}
+</script>
+
+
+
+    <h2> 2. COUNTDOWN - Temporizador con segundos</h2>
+
+    Crea un contador regresivo donde el usuario introduzca una cantidad de segundos.
+    Al pulsar "Iniciar", el contador debe ir bajando cada segundo hasta llegar a cero, donde mostrará “¡Tiempo terminado!”.
+    <br> 
+    <input type="number" id="seg" placeholder="Segundos"><br> 
+    <button onclick="iniciar2()">Iniciar</button><br> 
+
+    <h1 id="display"></h1>
+    <script>
+    let interval;
+    let decimas;
+
+    document.getElementById("seg").addEventListener('change', () => {
+        decimas = document.getElementById("seg").value * 10;
+    })
+
+    function mostrar2(){
+            const segundos = Math.floor(decimas / 10);
+            const decima = decimas % 10;
+            document.getElementById("display").innerHTML = segundos + '.' + decima;
+        }
+
+    function iniciar2(){
+        if (!interval){
+            interval = setInterval(reducir2,100);
+        }
+    }
+
+    function reducir2(){
+        decimas--;
+        mostrar2();
+
+        if (decimas == 0){
+            document.getElementById("display").innerHTML = "Tiempo finalizado";
+            clearInterval(interval);
+            interval = null;
+        }
+    }
+    </script>
+
+
+<h2>3. Location - Coordenadas y radianes</h2>
+
+Obtén la posición del usuario usando navigator.geolocation. Debes mostrar<br> 
+<ol> 
+    <li>       latitud y longitud con 2 decimales </li>
+    <li>  latitud y longitud en radianes </li>
+    <li>  diferencia respecto a  Madrid: 40.4168, -3.7038 </li>
+</ol>
+
+<button onclick="getLoc()">Obtener ubicación</button>
+<pre id="info"></pre>
+
+<script>
+function getLoc(){
+    const LAT_Madrid = 40.4168;
+    const LON_Madrid = -3.7038;    
+    //  navigator.geolocation.getCurrentPosition( pos => {        });
+}
+</script>
+
+<h2>4. Date.js - Cálculos avanzados</h2>
+ (Suponiendo que ya incluyes date.js en el documento.)
+Usando la librería date.js, calcula:
+<ol>
+    <li>  Primera fecha hábil (lunes-viernes) de este mes <div id="ej41"> </div>
+    </li>
+    <li>  Último día laborable del mes pasado <div id="ej42"> </div>
+    </li>
+    <li>  Próximo equinoccio de primavera (20 marzo) <div id="ej43"> </div>
+    </li>
+    <li>  Fecha dentro de 500 horas <div id="ej44"> </div>
+    </li>
+    <li> Fecha dentro de 200000 segundos <div id="ej45"> </div>
+    </li>
+    <li> Próximo día 15 que caiga en sábado <div id="ej46"> </div>
+    </li>
+</ol>
+<button onclick="calcularFechas4()">Calcular</button>
+
+
+<script src="date.js"></script>
+
+<script>
+function calcularFechas4(){
+    /* primerafecha = 
+       ultimodialaborable  =
+       equi =  
+       horas500
+       s200k
+       quincediassabado
+*/
+    document.getElementById("ej41").innerHTML=("<b> Primera hábil:"+ primerafecha+"</b>");
+    document.getElementById("ej42").innerHTML=("<b> Último laborable mes pasado:"+ultimodialaborable+"</b>");
+    document.getElementById("ej43").innerHTML=("<b> Próximo equinoccio:"+ equi+"</b>");
+    document.getElementById("ej44").innerHTML=("<b> 500 horas:"+ horas500+"</b>");
+    document.getElementById("ej45").innerHTML=("<b> 200k segundos:"+ s200k+"</b>");
+    document.getElementById("ej46").innerHTML=("<b> Próximo día 15 sábado:"+ quincediassabado+"</b>");
+}
+</script>
+
+
+<h2>5. Strings → Mostrar imágenes de letras</h2>
+<br>
+Escribe un texto. El script mostrará una imagen por cada letra usando la carpeta letters/.<br>
+Si hay espacios, debe usar la imagen blank.png.<br>
+<br>
+<input type="text" id="txt" placeholder="Escribe algo"><br>
+<button onclick="convertir5()">Convertir</button>
+<button onclick="limpiar5()">Limpiar</button>
+<br>
+
+<div id="out"></div>
+
+<script>
+function convertir5(){
+    let texto = document.getElementById("txt").value;
+
+    for (x of texto){
+        if (x != ' '){
+            document.getElementById("out").innerHTML += `<img src='letras/${x.toLowerCase()}.jpg'>`;
+        } else {
+            document.getElementById("out").innerHTML += `<img src='letras/espacio.jpg'>`;
+        }
+    }
+}
+
+function limpiar5(){
+    document.getElementById("out").innerHTML = '';
+}
+</script>
+
+
+
+<h2> 6. Sliders RGB → HSL </h2> 
+Usa tres barras deslizantes para elegir valores RGB.<br>
+Cada vez que cambien, convierte el color a HSL y muestra:<br>
+    • div con el color. Debes modificar el atributo color.style.background  = rgb(255,50,50)<br>
+    • valores RGB y HSL usando la function RGBtoHSL<br>
+
+R: <input type="range" min="0" max="255" value="255" id="r" onchange="calcular6()"><br>
+G: <input type="range" min="0" max="255" value="50" id="g" onchange="calcular6()"><br>
+B: <input type="range" min="0" max="255" value="50" id="b" onchange="calcular6()"><br>
+
+<div id="color" style="width:150px; height:150px; background:rgb(255,50,50)"></div>
+<h2 id="res"></h2>
+
+<script>
+ function calcular6(r,g,b){ 
+
+ }
+
+function RGBtoHSL(r,g,b){
+    // devuelve un array con los valores HSL
+    r/=255; g/=255; b/=255;
+    let max=Math.max(r,g,b), min=Math.min(r,g,b);
+    let h,s,l = (max+min)/2;
+
+    if(max===min){ h=s=0; }
+    else{
+        let d = max-min;
+        s = l>0.5 ? d/(2-max-min) : d/(max+min);
+        switch(max){
+            case r: h=(g-b)/d + (g<b?6:0); break;
+            case g: h=(b-r)/d + 2; break;
+            case b: h=(r-g)/d + 4; break;
+        }
+        h/=6;
+    }
+    return [Math.round(h*360), Math.round(s*100), Math.round(l*100)];
+}
+
+</script>
+
+<h1>7. Tablero 3×3 - Barajar, Invertir, Espejo  </h1>
+
+Crea un tablero de 3×3 con 9 imágenes aleatorias de una carpeta “icons/”.
+Incluye tres botones:
+<ol>
+    <li> "Barajar": mezcla aleatoriamente
+    </li>
+    <li> "Invertir": invierte las columnas
+    </li>
+</ol>
+
+<h2>Tablero de imágenes</h2>
+<div id="tablero"></div>
+<button onclick="pintar7()">Pintar</button>
+<button onclick="espejo()">Espejo</button>
+
+
+<script>
+let imgs = [1,2,3,4,5,6,7,8,9];
+let contador = 0;
+
+function pintar7(){
+/*  pinta el array como una tabla 3x3 */
+    for (let i = 0; i < 9; i++){
+        document.getElementById("tablero").innerHTML += `<img src='numeros/${imgs[i]}.jpg' id='imagen${i + 1}'>`;
+        contador++;
+
+        if (contador == 3){
+            document.getElementById("tablero").innerHTML += "<br>";
+            contador = 0;
+        }
+    }
+}
+
+function espejo(){
+    let pointer = 1;
+    for (let i = 0; i < 3; i++){
+        let url = document.getElementById(`imagen${pointer}`).src;
+        document.getElementById(`imagen${pointer}`).src = document.getElementById(`imagen${pointer + 2}`).src;
+        document.getElementById(`imagen${pointer + 2}`).src = url;
+
+        pointer += 3;
+    }
+}
+
+</script>
+
+
+<h2>8.  Juego Adivina el número</h2>
+Crea un juego en el que el usuario debe adivinar un número entre 1 y 100.
+El programa debe indicar:
+
+<ol> 
+<li>  “Muy alto” y mostrar la imagen del dedo abajo de la carpeta ej8
+</li><li>  “Muy bajo” y mostrar la imagen del dedo arriba  de la carpeta ej8
+</li><li>  “Correcto”y mostrar la imagen del aplauso de la carpeta ej8
+</li> 
+</ol>
+
+Cuanto temina debe decir cuanto tiempo has tardado y mostrar cuántos intentos ha llevad
+<br>
+<input type="number" id="num" placeholder="Tu intento"><br>
+<button onclick="iniciar()">Iniciar</button>
+<button onclick="probar()">Probar Numero</button>
+<div id="tiempo"> </div>
+<p id="log"></p>
+
+<script>
+let secreto = Math.floor(Math.random()*100)+1;
+let intentos = 0;
+let seg=0;
+let parar = false; 
+let intervalo8;
+
+function iniciar(){
+    if (!intervalo8){
+        intervalo8 = setInterval(aumentar8,1000);
+    }
+}
+
+function aumentar8(){
+    seg++;
+    document.getElementById("tiempo").innerHTML = "Tiempo transcurrido: " + seg;
+
+}
+
+function probar(){
+    let num8 = document.getElementById("num").value;
+
+    if (num8 < secreto){
+        document.getElementById("log").innerHTML = "Muy bajo";
+        document.getElementById("log").innerHTML += `<img src='ej8/arriba.jpg'>`;
+    } else if (num8 > secreto){
+        document.getElementById("log").innerHTML = "Muy alto";
+        document.getElementById("log").innerHTML += `<img src='ej8/abajo.jpg'>`;
+    } else {
+        document.getElementById("log").innerHTML = "Acertaste!!";
+        document.getElementById("log").innerHTML += `<img src='ej8/aplauso.jpg'>`;
+
+        clearInterval(intervalo8);
+        intervalo8 = null;
+    }
+ }
+
+</script>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
