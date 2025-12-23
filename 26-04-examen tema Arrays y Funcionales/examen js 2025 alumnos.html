@@ -59,24 +59,24 @@
         
         <div id="ej11"><strong> Mostrar aqui resultado </strong></div>
        
-              
+        <h4> Muestra los datos aqui </h4>
+        <div id="info1"></div>
+
         
-            <script>
+        <script>
 
             let array1 = [1, 2, 4, 5]
             let array2 = [6, 7, 1]
-            //ej1Mezclar(array1, array2)
+            let array3 = ej1Mezclar(array1,array2);
 
-            array1 = [1, 2, 4, 5, 3]
-            array2 = [6]
-            let array3 = [10, 11]
-            let array4 = [26, 27, 28]
+            document.getElementById("info1").innerHTML = array3.join(", ");
 
-           // ej1Mezclar(array1, array2, array3, array4)// [1,6,10,26,2,11,27,4,28,1,5,3]
+
+            function ej1Mezclar(...arrays){
+                return arrays.flat();
+            }
         
         </script>
-        <h4> Muestra los datos aqui </h4>
-        <div id="info1"></div>
     </div>
    
    
@@ -129,29 +129,21 @@
         <script>
             // aqui debe ir el codigo del objeto
 
-            function crearConjunto([...array]) {
+            function crearConjunto(...array) {
                 return [...new Set(array)];
             }
-            function disjuntosConjuntos() { }
-            function unirConjuntos() { }
-            function MostrarConjunto(conjunto) { 
+
+            function unirConjuntos(c1,c2){
+                return [...new Set(c1.concat(c2))];
+            }
+            
+            function disjuntosConjuntos(c1,c2){
+                return [...new Set([...c1.filter(elemento => !c2.includes(elemento)), ...c2.filter(elemento => !c1.includes(elemento))])]
             }
 
-            let ej3a = crearConjunto(1, 4, 1, 4, 1, 2, 1, 7, 7, 7, 9, 21);
-            let ej3a2 = crearConjunto(1, 4, 24, 12, 17, 1, 7, 9, 21);
-            let ej3a3 = crearConjunto(1, 4, 5, 3, 4, 1);
-            let ej3b = unirConjuntos(ej3a,ej3a2)
-            let ej3c = disjuntosConjuntos(ej3a, ej3a2)
-            
-
-            // Mostrar a,b,c en info
-            MostrarConjunto(ej3a)
-            MostrarConjunto(ej3a2)
-            MostrarConjunto(ej3a3)
-            MostrarConjunto(ej3b)
-            MostrarConjunto(ej3c)
-
-            
+            document.getElementById("info3").innerHTML = crearConjunto(1, 4, 1, 4, 1, 2, 1, 7, 7, 7, 9, 21).join(", ");
+            document.getElementById("info3").innerHTML += `<br> Unión: ${unirConjuntos( [7,2,3,6,5,1] ,[7,2,3,4,5,1,10,9] )}`;
+            document.getElementById("info3").innerHTML += `<br> Diferencia: ${disjuntosConjuntos([7,2,3,6,5,1] ,[7,2,3,4,5,1,10,9])}`
 
         </script>
     </div>
@@ -176,6 +168,15 @@
             // aqui debe ir el codigo
              // tresMitad(['pepes','Lopez','c','javascript','java']) //  'epe','ope','c','asc','jav',
             // mostrar array
+
+            function tresMitad(cadenas){
+                return cadenas.reduce((acc,cadena,indice) => {
+                            acc[indice] = cadena.length < 3 ? cadena : cadena.length % 2 == 0 ?  cadena.slice(cadena.length/2 - 2, cadena.length/2 + 1) : cadena.slice(cadena.length/2 - 1, cadena.length/2 + 2);
+                            return acc;
+                        },[]);
+            }
+
+            document.getElementById("info4").innerHTML = tresMitad(['pepes','Lopez','c','javascript','java']).join(", ");
 
         </script>
  </div>
@@ -233,11 +234,11 @@ sumarPotencias2Indices([1,3,4,2,1])
             // mostrar array
 
             function ordenTamanyo(array){
-               return array.toSorted((a,b)=>a[0]-b[0]);
+               return array.toSorted((a,b)=>a.length - b.length || a.localeCompare(b)) ;
             }
 
             document.getElementById("info6").innerHTML = 
-                ordenTamanyo(['hola', 'mv', 'adios', 'xz' , 'b']).join(", ");
+                ordenTamanyo(['hola', 'odios', 'mv', 'adios',  'xz' , 'b']).join(", ");
         </script>
  </div>
  
@@ -255,38 +256,19 @@ sumarPotencias2Indices([1,3,4,2,1])
             // mostrar array
 
             function sumaLetras(array){
-                let total = 0;
-                for (let i of array){
-                    for (let j of i){
-                        if (isNaN(j)){
-                            switch(j){
-                                case "A":
-                                    total += 10;
-                                    break;
-                                case "B":
-                                    total += 11;
-                                    break;
-                                case "C":
-                                    total += 12;
-                                    break;
-                                case "D":
-                                    total += 13;
-                                    break;
-                                case "E":
-                                    total += 14;
-                                    break;
-                                case "F":
-                                    total += 15;
-                                    break;
-                                default:
-                                    return "Error, Caracter incorrecto";
-                            }
-                        } else {
-                            total += j;
-                        }
-                    }
+                const valoresHex = {
+                    A : 10,
+                    B : 11,
+                    C : 12,
+                    D : 13,
+                    E : 14,
+                    F : 15
                 }
-                return total;
+
+                return array.flat().reduce((acc,valor) => {
+                    acc += (isNaN(Number(valor)) ? valoresHex[valor] : valor) ?? 0;
+                    return acc;
+                },0)
             }
 
             let suma7 = sumaLetras([[ 1,2], ['B',1, 1], [1,3,'A'] ]);
@@ -330,11 +312,11 @@ sumarPotencias2Indices([1,3,4,2,1])
                     resultado8.push(Array.of(clave, frecuencias[clave]));
                 }
 
-                return resultado8;
+                return resultado8.toSorted((a,b) => b[1] - a[1]);
             }
 
             document.getElementById("info8").innerHTML =
-                "Resultado de las ocurrencias: " + contarCadenas(palabras).join(", ");
+                "Resultado de las ocurrencias: " + contarCadenas(palabras).join(" / ");
 
 
         </script>
