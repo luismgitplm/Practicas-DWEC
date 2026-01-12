@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Ejercicios 2 y 3</h3>
+    <p>Escribe un texto: <input type="text" id="input2"></p>
+    <p id="cont2"></p>
+
+    <script>
+        const input2 = document.getElementById("input2")
+        const cont2 = document.getElementById("cont2")
+
+        input2.addEventListener("blur", () => {
+            cont2.innerHTML = "El campo de texto perdió el enfoque";
+        })
+
+        input2.addEventListener("focus", () => {
+            cont2.innerHTML = "El campo de texto tiene el enfoque";
+        })
+    </script>
+
+    <h3>Ejercicio 4</h3>
+    <img src="Captura de pantalla 2025-11-06 195428.png" id="imagen4">
+    <p id="cont4"></p>
+
+    <script>
+        document.getElementById("imagen4").addEventListener("load", () => {
+            document.getElementById("cont4").innerHTML = "La imagen se ha cargado con éxito";
+        })
+    </script>
+
+    <h3>Ejercicios 5 y 6</h3>
+    <p>Pulsa una vez en la imagen para reducir su tamaño, pulsa dos para aumentarlo</p>
+    <img src="Captura de pantalla 2025-11-06 195428.png" id="imagen5">
+
+    <script>
+        const img5 = document.getElementById("imagen5");
+        img5.addEventListener("click", () => {
+            img5.style.width = "70px";
+        })
+
+        img5.addEventListener("dblclick", () => {
+            img5.style.width = "120px";
+        })
+    </script>
+
+    <h3>Ejercicios 8 y 9</h3>
+    <p>Escriba texto: <input type="text" id="input8"></p>
+    <div id="cont8"></div>
+
+    <script>
+        const input8 = document.getElementById("input8");
+        const cont8 = document.getElementById("cont8");
+
+        input8.addEventListener("change", () => {
+            cont8.innerHTML = "change";
+        })
+
+        input8.addEventListener("keydown", () => {
+            cont8.innerHTML = "keydown";
+        })
+
+        input8.addEventListener("keyup", () => {
+            cont8.innerHTML = "keyup";
+        })
+
+        input8.addEventListener("keypress", () => {
+            cont8.innerHTML = "keypress";
+        })
+    </script>
+</body>
+</html>
