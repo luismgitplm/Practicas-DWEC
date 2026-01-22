@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>Expresiones Regulares </title>
+<style > .formulario { margin-right: auto; margin-left: auto; width: 400px;text-align:left;} </style>
+</head><body>
+<div class="formulario">
+<fieldset> <legend> Expresiones regulares </legend>
+<p> Nombre: <input type="text" id="textopeq" name="textopeq" value="2" /> </p> <br/>
+<p> Comentarios: </p>
+<p> <textarea id="textogrande" name="textogrande" rows="10" cols="70">
+    </textarea> </p> <br/><br />
+<button id="b2" > Ejercicio2 </button> <button id="b3" > Ejercicio3 </button> <button id="b4" > Ejercicio4 </button> <button id="b5"
+> Ejercicio5 </button> <button id="b6" > Ejercicio6 </button> <button id="b7" > Ejercicio7 </button> <button id="b8" > Ejercicio8 </button>
+<button id="b9" > Ejercicio9 </button> <button id="b10" > Ejercicio10 </button> <button id="b11" > Ejercicio11 </button> </fieldset>
+</div>
+<h2> Ejercicios Salida </h2>
+<p id="ejercicioid"> </p>
+<script >
+document.getElementById('b2').addEventListener('click',ejercicio2);
+function ejercicio2() {
+var textocompleto=document.getElementsByName('textogrande')[0].value;
+let yearRegExp = new RegExp('[0-9]{4}','g');
+anos=textocompleto.matchAll(yearRegExp);
+//yearRegExp.exec(textocompleto);
+//document.getElementById('ejercicio3id').innerHTML=anos;
+//let cadenatmp="<ol>"+anos. join('</li><li>')+"</ol>"+;
+let cadenatmp="<ol>";
+for (const elemento of anos) {cadenatmp+= "<li>"+elemento+"</li>"; }
+cadenatmp+="</ol>";
+
+document.getElementById('ejercicioid').innerHTML=cadenatmp; }
+</script>
+</body>
+</html>
