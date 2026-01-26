@@ -17,5 +17,5 @@ document.getElementById("botonOperacion").addEventListener('click', () => {
 
 document.getElementById("botonResultado").addEventListener('click', () => {
     document.getElementById("contenidoResultado").innerHTML = 
-        `El resultado de la operación con ambos números es: ${operacion[1]}`
+        `El resultado de la operación con ambos números es: ${operacion[1](numero1,numero2)}`
 })
