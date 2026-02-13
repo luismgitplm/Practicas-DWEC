@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Práctica Eventos</title>
+</head>
+<body>
+
+<h2>Ejercicio 1</h2>
+<p>Existen tres modelos de eventos en JavaScript. El modelo inline, donde el evento se define directamente en el HTML usando atributos como onclick. El modelo tradicional o clásico, donde se asigna el evento desde JavaScript usando elemento.onclick = función. Y el modelo avanzado o estándar, que utiliza addEventListener, permitiendo múltiples manejadores y controlando la fase de captura o burbujeo.</p>
+
+<hr>
+
+<h2>Ejercicio 2</h2>
+<p>El burbujeo es el proceso por el cual un evento que ocurre en un elemento hijo se propaga hacia sus elementos padres en el árbol del DOM. Por ejemplo, si hacemos clic en un botón dentro de un div, el evento primero se ejecuta en el botón y después “sube” al div y luego al body.</p>
+
+<hr>
+
+<h2>Ejercicio 3</h2>
+<a href="pagina.html" onclick="alertar(); return false">Pulsa aqui</a>
+
+<script>
+function alertar(){
+alert("Acción por defecto eliminada");
+}
+</script>
+
+<hr>
+
+<h2>Ejercicio 4</h2>
+<p>Color distinto al cargar la página</p>
+
+<script>
+window.onload = function(){
+r=Math.random()*256;
+g=Math.random()*256;
+b=Math.random()*256;
+color="rgb("+r+","+g+","+b+")";
+this.document.body.style.backgroundColor=color;
+}
+</script>
+
+<hr>
+
+<h2>Ejercicio 5</h2>
+<input type="text" id="texto5">
+<h1 id="resultado5"></h1>
+
+<script>
+document.getElementById("texto5").onchange=Ponerengrande;
+function Ponerengrande(){
+document.getElementById("resultado5").innerHTML=this.value;
+}
+</script>
+
+<hr>
+
+<h2>Ejercicio 6</h2>
+<input type="number" id="n1">
+<input type="number" id="n2">
+<button id="btn6">Operar</button>
+<h1 id="res6"></h1>
+
+<script>
+function operacion(op){
+var a=parseFloat(document.getElementById("n1").value);
+var b=parseFloat(document.getElementById("n2").value);
+var r=0;
+if(op=="+"){r=a+b;}
+if(op=="-"){r=a-b;}
+if(op=="*"){r=a*b;}
+if(op=="/"){r=a/b;}
+document.getElementById("res6").innerHTML=r;
+}
+document.getElementById("btn6").onclick=function(){operacion("+");};
+</script>
+
+<hr>
+
+<h2>Ejercicio 7</h2>
+<input type="number" id="n7a">
+<input type="number" id="n7b">
+<button id="btn7">Operar</button>
+<h1 id="res7"></h1>
+
+<script>
+function operacion7(){
+var a=parseFloat(document.getElementById("n7a").value);
+var b=parseFloat(document.getElementById("n7b").value);
+document.getElementById("res7").innerHTML=a+b;
+}
+document.getElementById("btn7").addEventListener("click",operacion7,false);
+</script>
+
+<hr>
+
+<h2>Ejercicio 8</h2>
+<button id="inhabilitar">Inhabilitar evento</button>
+
+<script>
+function operacion7(){
+var a=parseFloat(document.getElementById("n7a").value);
+var b=parseFloat(document.getElementById("n7b").value);
+document.getElementById("res7").innerHTML=a+b;
+}
+document.getElementById("btn7").addEventListener("click",operacion7,false);
+document.getElementById("inhabilitar").onclick=function(){
+document.getElementById("btn7").removeEventListener("click",operacion7,false);
+};
+</script>
+
+<hr>
+
+<h2>Ejercicio 9</h2>
+<button id="b1">cambia de color</button>
+
+<script>
+document.getElementById("b1").addEventListener('click', () => {
+r=Math.random()*256;
+g=Math.random()*256;
+b=Math.random()*256;
+color="rgb("+r+","+g+","+b+")";
+document.body.style.backgroundColor=color;
+},true);
+</script>
+
+<hr>
+
+<h2>Ejercicio 10</h2>
+<button id="b2">rojo verde azul</button>
+
+<script>
+var colores=["red","green","blue"];
+var i=0;
+document.getElementById("b2").addEventListener("click",function(){
+document.body.style.backgroundColor=colores[i];
+i++;
+if(i>=colores.length){i=0;}
+},false);
+</script>
+
+<hr>
+
+<h2>Ejercicio 11</h2>
+<input type="text" id="texto11">
+<h1 id="res11"></h1>
+
+<script>
+function hacerAlgo(){
+document.getElementById("res11").innerHTML=this.value;
+}
+if(document.getElementById("texto11").attachEvent){
+document.getElementById("texto11").attachEvent("onchange",hacerAlgo);
+}
+</script>
+
+</body>
+</html>

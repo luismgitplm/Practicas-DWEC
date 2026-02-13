@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LocalStorage</title>
+</head>
+<body>
+
+<h2>Ejercicio 0</h2>
+<button id="b0">Ejercicio0 add LocalStorage</button>
+<h2>Ejercicios Salida</h2>
+<p id="ejercicio2id"></p>
+
+<script>
+document.getElementById('b0').addEventListener('click',ejercicio0);
+function ejercicio0(){
+localStorage.setItem('Nombre','Miguel Antonio');
+localStorage.Apellido=' ';
+}
+</script>
+
+<hr>
+
+<h2>Ejercicio 1</h2>
+<button id="b1">Comprobar Storage</button>
+<p id="res1"></p>
+
+<script>
+document.getElementById('b1').addEventListener('click',function(){
+if(typeof(Storage)!=="undefined"){
+document.getElementById('res1').innerHTML="Soporta Storage";
+}else{
+document.getElementById('res1').innerHTML="No soporta Storage";
+}
+});
+</script>
+
+<hr>
+
+<h2>Ejercicio 2</h2>
+<input type="text" id="texto2">
+<button id="b2">Guardar dato</button>
+
+<script>
+document.getElementById('b2').addEventListener('click',function(){
+var valor=document.getElementById('texto2').value;
+var clave="dato_"+localStorage.length;
+localStorage.setItem(clave,valor);
+});
+</script>
+
+<hr>
+
+<h2>Ejercicio 3</h2>
+<input type="text" id="texto3">
+<button id="b3">Guardar y añadir al select</button>
+<select id="selectElementId"></select>
+
+<script>
+document.getElementById('b3').addEventListener('click',function(){
+var valor=document.getElementById('texto3').value;
+var clave="dato_"+localStorage.length;
+localStorage.setItem(clave,valor);
+var select=document.getElementById('selectElementId');
+var opt=document.createElement('option');
+opt.value=clave;
+opt.innerHTML=valor;
+select.appendChild(opt);
+});
+</script>
+
+<hr>
+
+<h2>Ejercicio 4</h2>
+<button id="b4">Mostrar LocalStorage</button>
+<ul id="lista4"></ul>
+
+<script>
+document.getElementById('b4').addEventListener('click',function(){
+var lista=document.getElementById('lista4');
+lista.innerHTML="";
+for(var i=0;i<localStorage.length;i++){
+var clave=localStorage.key(i);
+var valor=localStorage.getItem(clave);
+var li=document.createElement('li');
+li.innerHTML=clave+" : "+valor;
+lista.appendChild(li);
+}
+});
+</script>
+
+<hr>
+
+<h2>Ejercicio 5</h2>
+<button id="b5">Eliminar seleccionado</button>
+
+<script>
+document.getElementById('b5').addEventListener('click',function(){
+var select=document.getElementById('selectElementId');
+var clave=select.value;
+localStorage.removeItem(clave);
+select.remove(select.selectedIndex);
+});
+</script>
+
+<hr>
+
+<h2>Ejercicio 6</h2>
+<button id="b6">Limpiar Storage</button>
+
+<script>
+document.getElementById('b6').addEventListener('click',function(){
+localStorage.clear();
+document.getElementById('selectElementId').innerHTML="";
+document.getElementById('lista4').innerHTML="";
+});
+</script>
+
+</body>
+</html>

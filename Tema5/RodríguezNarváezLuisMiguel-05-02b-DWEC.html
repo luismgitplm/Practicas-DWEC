@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Práctica DOM Avanzado</title>
+</head>
+<body>
+
+<h2>Ejercicio 1</h2>
+<button id="btnEj1">Añadir párrafo</button>
+
+<script>
+document.getElementById("btnEj1").onclick = function() {
+    var p = document.createElement("p");
+    var texto = document.createTextNode("Este párrafo fue creado dinámicamente");
+    p.appendChild(texto);
+    document.body.appendChild(p);
+};
+</script>
+
+
+<hr>
+
+<h2>Ejercicio 2</h2>
+<ul id="listaEj2"></ul>
+
+<script>
+var ul = document.getElementById("listaEj2");
+
+for (var i = 1; i <= 5; i++) {
+    var li = document.createElement("li");
+    var texto = document.createTextNode("Elemento " + i);
+    li.appendChild(texto);
+    ul.appendChild(li);
+}
+</script>
+
+
+<hr>
+
+<h2>Ejercicio 3</h2>
+<select id="selectEj3"></select>
+
+<script>
+var datos = ["Uno", "Dos", "Tres", "Cuatro"];
+var select = document.getElementById("selectEj3");
+
+for (var i = 0; i < datos.length; i++) {
+    var option = document.createElement("option");
+    var texto = document.createTextNode(datos[i]);
+    option.appendChild(texto);
+    option.value = datos[i];
+    select.appendChild(option);
+}
+</script>
+
+
+<hr>
+
+<h2>Ejercicio 4</h2>
+<select id="selectEj4"></select>
+
+<script>
+var paises = ["España", "Francia", "Italia", "Portugal"];
+var select4 = document.getElementById("selectEj4");
+
+for (var i = 0; i < paises.length; i++) {
+    var option = document.createElement("option");
+    var texto = document.createTextNode(paises[i]);
+    option.appendChild(texto);
+    option.value = paises[i];
+    select4.appendChild(option);
+}
+</script>
+
+
+<hr>
+
+<h2>Ejercicio 5</h2>
+<div id="contenedor">
+<p>Texto 1</p>
+<p>Texto 2</p>
+</div>
+<button id="btnEj5">Contar nodos</button>
+<div id="resultadoEj5"></div>
+
+<script>
+document.getElementById("btnEj5").onclick = function() {
+
+    var contenedor = document.getElementById("contenedor");
+    var nodos = contenedor.childNodes;
+
+    var resultado = document.getElementById("resultadoEj5");
+
+    var pTotal = document.createElement("p");
+    var textoTotal = document.createTextNode("Total nodos: " + nodos.length);
+    pTotal.appendChild(textoTotal);
+    resultado.appendChild(pTotal);
+
+    for (var i = 0; i < nodos.length; i++) {
+        var p = document.createElement("p");
+        var texto = document.createTextNode("Nodo " + i + " tipo: " + nodos[i].nodeType);
+        p.appendChild(texto);
+        resultado.appendChild(p);
+    }
+};
+</script>
+
+
+<hr>
+
+<h2>Ejercicio 6</h2>
+<button id="btnEj6">Modificar primer texto</button>
+
+<script>
+document.getElementById("btnEj6").onclick = function() {
+
+    var ul = document.getElementById("listaEj2");
+    var hijos = ul.childNodes;
+
+    for (var i = 0; i < hijos.length; i++) {
+        if (hijos[i].nodeType === 1) { 
+            var textoNodo = hijos[i].childNodes[0];
+            textoNodo.nodeValue = "Opcion modificada";
+            break;
+        }
+    }
+};
+</script>
+
+
+<hr>
+
+<h2>Ejercicio 7</h2>
+<ul id="listaFrutas">
+<li>Manzana</li>
+<li>Banana</li>
+<li>Naranja</li>
+</ul>
+<button id="btnEj7">Reemplazar Banana</button>
+
+<script>
+document.getElementById("btnEj7").onclick = function() {
+
+    var lista = document.getElementById("listaFrutas");
+    var hijos = lista.childNodes;
+    var banana;
+
+    for (var i = 0; i < hijos.length; i++) {
+        if (hijos[i].nodeType === 1 && hijos[i].childNodes[0].nodeValue === "Banana") {
+            banana = hijos[i];
+        }
+    }
+
+    var nueva = document.createElement("li");
+    var texto = document.createTextNode("Pera");
+    nueva.appendChild(texto);
+
+    lista.replaceChild(nueva, banana);
+};
+</script>
+
+
+<hr>
+
+<h2>Ejercicio 8</h2>
+<div id="bloqueEj8">
+<p>Hola</p>
+<p>Hola error</p>
+<p>Adios error</p>
+<p>Adios</p>
+</div>
+<button id="btnEj8">Corregir errores</button>
+
+<script>
+document.getElementById("btnEj8").onclick = function() {
+
+    var bloque = document.getElementById("bloqueEj8");
+    var hijos = bloque.childNodes;
+
+    for (var i = 0; i < hijos.length; i++) {
+
+        if (hijos[i].nodeType === 1) {
+
+            var texto = hijos[i].childNodes[0].nodeValue;
+
+            if (texto.indexOf("error") !== -1) {
+
+                var nuevoP = document.createElement("p");
+                var nuevoTexto = document.createTextNode("Contenido corregido");
+                nuevoP.appendChild(nuevoTexto);
+
+                bloque.replaceChild(nuevoP, hijos[i]);
+            }
+        }
+    }
+};
+</script>
+
+
+<hr>
+
+<h2>Ejercicio 9</h2>
+<ul id="listaEliminar">
+<li>A</li>
+<li>B</li>
+<li>C</li>
+</ul>
+<button id="btnEj9">Eliminar último</button>
+
+<script>
+document.getElementById("btnEj9").onclick = function() {
+
+    var lista = document.getElementById("listaEliminar");
+    var hijos = lista.childNodes;
+
+    for (var i = hijos.length - 1; i >= 0; i--) {
+        if (hijos[i].nodeType === 1) {
+            lista.removeChild(hijos[i]);
+            break;
+        }
+    }
+};
+</script>
+
+
+<hr>
+
+<h2>Ejercicio 10</h2>
+
+<div id="panel">
+<section>
+<h3>Título 1</h3>
+<p>Contenido A</p>
+</section>
+<section>
+<h3>Título 2</h3>
+<p>Contenido B</p>
+</section>
+</div>
+
+Numero Seccion : <input type="text" id="seccion"> <br>
+<button id="btnReemplazar">Reemplazar sección</button>
+<button id="btnEliminar">Eliminar párrafo primera sección</button>
+
+<script>
+
+document.getElementById("btnReemplazar").onclick = function() {
+
+    var panel = document.getElementById("panel");
+    var hijos = panel.childNodes;
+    var contador = 0;
+    var segundaSeccion;
+
+    for (var i = 0; i < hijos.length; i++) {
+        if (hijos[i].nodeType === 1) {
+            contador++;
+            if (contador === 2) {
+                segundaSeccion = hijos[i];
+            }
+        }
+    }
+
+    var nuevaSeccion = document.createElement("section");
+
+    var h3 = document.createElement("h3");
+    var textoH3 = document.createTextNode("Título reemplazado");
+    h3.appendChild(textoH3);
+
+    var p = document.createElement("p");
+    var textoP = document.createTextNode("Este contenido fue creado dinámicamente");
+    p.appendChild(textoP);
+
+    nuevaSeccion.appendChild(h3);
+    nuevaSeccion.appendChild(p);
+
+    panel.replaceChild(nuevaSeccion, segundaSeccion);
+};
+
+
+document.getElementById("btnEliminar").onclick = function() {
+
+    var panel = document.getElementById("panel");
+    var hijos = panel.childNodes;
+    var primeraSeccion;
+
+    for (var i = 0; i < hijos.length; i++) {
+        if (hijos[i].nodeType === 1) {
+            primeraSeccion = hijos[i];
+            break;
+        }
+    }
+
+    var hijosSeccion = primeraSeccion.childNodes;
+
+    for (var j = 0; j < hijosSeccion.length; j++) {
+        if (hijosSeccion[j].nodeType === 1 && hijosSeccion[j].nodeName === "P") {
+            primeraSeccion.removeChild(hijosSeccion[j]);
+            break;
+        }
+    }
+};
+
+</script>
+
+
+</body>
+</html>

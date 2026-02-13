@@ -1,35 +1,154 @@
 <!DOCTYPE html>
-<html><head>
+<html lang="es">
+<head>
 <meta charset="UTF-8">
-<title>Expresiones Regulares </title>
-<style > .formulario { margin-right: auto; margin-left: auto; width: 400px;text-align:left;} </style>
-</head><body>
-<div class="formulario">
-<fieldset> <legend> Expresiones regulares </legend>
-<p> Nombre: <input type="text" id="textopeq" name="textopeq" value="2" /> </p> <br/>
-<p> Comentarios: </p>
-<p> <textarea id="textogrande" name="textogrande" rows="10" cols="70">
-    </textarea> </p> <br/><br />
-<button id="b2" > Ejercicio2 </button> <button id="b3" > Ejercicio3 </button> <button id="b4" > Ejercicio4 </button> <button id="b5"
-> Ejercicio5 </button> <button id="b6" > Ejercicio6 </button> <button id="b7" > Ejercicio7 </button> <button id="b8" > Ejercicio8 </button>
-<button id="b9" > Ejercicio9 </button> <button id="b10" > Ejercicio10 </button> <button id="b11" > Ejercicio11 </button> </fieldset>
-</div>
-<h2> Ejercicios Salida </h2>
-<p id="ejercicioid"> </p>
-<script >
-document.getElementById('b2').addEventListener('click',ejercicio2);
-function ejercicio2() {
-var textocompleto=document.getElementsByName('textogrande')[0].value;
-let yearRegExp = new RegExp('[0-9]{4}','g');
-anos=textocompleto.matchAll(yearRegExp);
-//yearRegExp.exec(textocompleto);
-//document.getElementById('ejercicio3id').innerHTML=anos;
-//let cadenatmp="<ol>"+anos. join('</li><li>')+"</ol>"+;
-let cadenatmp="<ol>";
-for (const elemento of anos) {cadenatmp+= "<li>"+elemento+"</li>"; }
-cadenatmp+="</ol>";
+<title>Expresiones Regulares</title>
+<style>
+.formulario{
+margin-right:auto;
+margin-left:auto;
+width:500px;
+text-align:left;
+}
+.error{color:red;}
+.correcto{color:green;}
+</style>
+</head>
 
-document.getElementById('ejercicioid').innerHTML=cadenatmp; }
+<body>
+
+<h2>Ejercicio 1</h2>
+<p>Se recoge el número indicado y se crea una expresión regular que obliga al texto a tener exactamente esa cantidad de caracteres. Si coincide es correcto, si no es error.</p>
+
+<div class="formulario">
+<fieldset>
+<legend>Expresiones regulares</legend>
+
+<p>Nombre:
+<input type="text" id="textopeq" value="2">
+</p>
+
+<p>Comentarios:</p>
+
+<p>
+<textarea id="textogrande" rows="8" cols="60"></textarea>
+</p>
+
+<button id="btn1">Comprobar tamaño exacto</button>
+<button id="btn2">Buscar tamaño 4 vocal</button>
+<button id="btn3">Buscar inicio párrafo</button>
+<button id="btn4">Buscar final párrafo</button>
+<button id="btn5">Buscar entre ''</button>
+<button id="btn6">Reemplazar o/a por @</button>
+<button id="btn7">Telefonos Malaga</button>
+<button id="btn8">Buscar emails</button>
+<button id="btn9">Buscar URLs</button>
+<button id="btn10">Eliminar saltos linea</button>
+<button id="btn11">Listar palabras</button>
+<button id="btn12">Numeros o palabras >3</button>
+<button id="btn13">Articulos definidos</button>
+<button id="btn14">Buscar parentesis</button>
+
+<p id="resultado"></p>
+
+</fieldset>
+</div>
+
+<script>
+
+var resultado=document.getElementById("resultado");
+var textoArea=document.getElementById("textogrande");
+
+document.getElementById("btn1").addEventListener("click",function(){
+var numero=document.getElementById("textopeq").value;
+var texto=textoArea.value;
+var exp=new RegExp("^.{"+numero+"}$");
+if(exp.test(texto)){
+resultado.innerHTML="Texto correcto";
+}else{
+resultado.innerHTML="Texto incorrecto";
+}
+});
+
+document.getElementById("btn2").addEventListener("click",function(){
+var texto=textoArea.value;
+var exp=/\b[aeiouAEIOU]\w{3}\b/g;
+resultado.innerHTML=texto.match(exp);
+});
+
+document.getElementById("btn3").addEventListener("click",function(){
+var texto=textoArea.value;
+var exp=/^\w+/gm;
+resultado.innerHTML=texto.match(exp);
+});
+
+document.getElementById("btn4").addEventListener("click",function(){
+var texto=textoArea.value;
+var exp=/\w+$/gm;
+resultado.innerHTML=texto.match(exp);
+});
+
+document.getElementById("btn5").addEventListener("click",function(){
+var texto=textoArea.value;
+var exp=/'[^']+'/g;
+resultado.innerHTML=texto.match(exp);
+});
+
+document.getElementById("btn6").addEventListener("click",function(){
+var texto=textoArea.value;
+var nuevo=texto.replace(/[oa]/gi,"@");
+resultado.innerHTML=nuevo;
+});
+
+document.getElementById("btn7").addEventListener("click",function(){
+var texto=textoArea.value;
+var exp=/\b(952|951)\d{6}\b/g;
+resultado.innerHTML=texto.match(exp);
+});
+
+document.getElementById("btn8").addEventListener("click",function(){
+var texto=textoArea.value;
+var exp=/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}/g;
+resultado.innerHTML=texto.match(exp);
+});
+
+document.getElementById("btn9").addEventListener("click",function(){
+var texto=textoArea.value;
+var exp=/https?:\/\/[^\s]+/g;
+resultado.innerHTML=texto.match(exp);
+});
+
+document.getElementById("btn10").addEventListener("click",function(){
+var texto=textoArea.value;
+var nuevo=texto.replace(/\n/g," ");
+resultado.innerHTML=nuevo;
+});
+
+document.getElementById("btn11").addEventListener("click",function(){
+var texto=textoArea.value;
+var exp=/\b[a-zA-Z]+\b/g;
+resultado.innerHTML=texto.match(exp);
+});
+
+document.getElementById("btn12").addEventListener("click",function(){
+var texto=textoArea.value;
+var exp=/\b\d+\b|\b[a-zA-Z]{4,}\b/g;
+resultado.innerHTML=texto.match(exp);
+});
+
+document.getElementById("btn13").addEventListener("click",function(){
+var texto=textoArea.value;
+var exp=/\b(el|la|los|las)\s+\w+/gi;
+resultado.innerHTML=texto.match(exp);
+});
+
+document.getElementById("btn14").addEventListener("click",function(){
+var texto=textoArea.value;
+var exp=/\([^)]*\)/g;
+resultado.innerHTML=texto.match(exp);
+});
+
 </script>
+
 </body>
 </html>
