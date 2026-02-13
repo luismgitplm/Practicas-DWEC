@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Resumen Prácticas JavaScript</title>
+</head>
+<body>
+
+<!--
+==========================================
+RESUMEN DE TEMAS DE JAVASCRIPT TRATADOS
+==========================================
+
+1. MANIPULACIÓN DEL DOM
+- Crear, modificar y eliminar elementos:
+  - document.createElement(), document.createTextNode()
+  - appendChild(), replaceChild(), removeChild()
+  - childNodes, nodeType
+
+Ejemplo:
+const p = document.createElement("p");
+const texto = document.createTextNode("Hola Mundo");
+p.appendChild(texto);
+document.body.appendChild(p);
+
+Resultado:
+Se añade un párrafo con "Hola Mundo" al final del body.
+
+- Modificar contenido:
+  - elemento.textContent, elemento.innerHTML (aunque en algunas prácticas usamos solo appendChild)
+
+- Iterar nodos:
+  for(let i=0; i<parent.childNodes.length; i++){...}
+
+---
+
+2. FORMULARIOS Y INPUTS
+- Acceder a valores de inputs:
+  - document.getElementById("id").value
+  - document.forms["nombreForm"].elements["nombreInput"].value
+
+- Propiedades útiles:
+  - value, defaultValue, maxLength, size, readOnly, type, name
+
+- Manipulación:
+  - Activar/desactivar checkboxes
+  - Insertar opciones en selects dinámicamente
+  - Seleccionar radio buttons
+  - Añadir nuevas opciones al select
+
+Ejemplo:
+const select = document.getElementById("miSelect");
+const opt = document.createElement("option");
+opt.text = "Opción 1";
+select.add(opt);
+
+Resultado:
+Se añade "Opción 1" al select.
+
+---
+
+3. EVENTOS
+- Diferentes modelos:
+  - HTML inline, propiedad de objeto, addEventListener
+- Eventos usados:
+  - click, change, blur, load, onchange
+- Ejemplos:
+  - Convertir texto a mayúsculas al salir del input
+  - Poner texto en un h1 al escribir en un input
+  - Botón que cambia color de fondo aleatoriamente
+
+- Métodos avanzados:
+  - removeEventListener(), attachEvent() (IE)
+  - Spy y mocks en tests (jest)
+
+Ejemplo:
+boton.addEventListener("click", function(){ alert("clic"); });
+
+Resultado:
+Al pulsar el botón aparece un alert.
+
+---
+
+4. LOCALSTORAGE Y SESSIONSTORAGE
+- Guardar datos:
+  - localStorage.setItem("clave","valor")
+- Leer datos:
+  - localStorage.getItem("clave")
+- Borrar datos:
+  - localStorage.removeItem("clave")
+  - localStorage.clear()
+- Ventajas frente a cookies:
+  - Más capacidad (~5MB)
+  - No se envía al servidor automáticamente
+  - Más fácil de usar en JS
+
+Ejemplo:
+localStorage.setItem("usuario","Pepito");
+console.log(localStorage.getItem("usuario")); // "Pepito"
+
+---
+
+5. JSON
+- Convertir entre JSON y objetos JS:
+  - JSON.parse(cadena)
+  - JSON.stringify(objeto)
+- Iterar arrays y objetos JSON
+- Ejemplo básico:
+const cadena = '{"nombre":"Pepito","edad":25}';
+const obj = JSON.parse(cadena);
+console.log(obj.nombre); // "Pepito"
+
+- Se usa frecuentemente con:
+  - localStorage
+  - APIs (AJAX / fetch)
+- Buenas prácticas:
+  - try...catch al parsear JSON
+  - Validar datos recibidos
+
+---
+
+6. AJAX Y FETCH
+- Permite comunicarte con un servidor sin recargar la página
+- fetch() devuelve promesas
+- Problema con archivos locales:
+  - Algunos navegadores bloquean AJAX sobre file://
+- Soluciones:
+  - Usar servidor local (Node.js, Python, XAMPP)
+  - Usar APIs externas con CORS habilitado
+
+Ejemplo:
+fetch("datos.json")
+  .then(res => res.json())
+  .then(data => console.log(data));
+
+Resultado esperado:
+Se muestra el contenido JSON del archivo en consola.
+
+---
+
+7. EXPRESIONES REGULARES
+- Buscar patrones en textos:
+  - /^inicio/ → al principio
+  - /fin$/ → al final
+  - /\d+/ → números
+  - /"[^"]*"/ → texto entre comillas
+- Reemplazar con replace:
+  - texto.replace(/a|o/g,"@")
+- Extraer datos como emails, teléfonos, URLs, palabras
+
+Ejemplo:
+const txt = "Mi email es test@mail.com";
+const regex = /\S+@\S+\.\S+/g;
+console.log(txt.match(regex)); // ["test@mail.com"]
+
+---
+
+8. RESUMEN DE CONCEPTOS CLAVE
+- DOM: manipular elementos, nodos, listas, formularios
+- Eventos: addEventListener, removeEventListener, attachEvent, onclick
+- localStorage/SessionStorage: almacenamiento en navegador
+- JSON: parse, stringify, iterar arrays y objetos
+- AJAX/fetch: comunicación asíncrona
+- Expresiones regulares: búsqueda y reemplazo de patrones
+- Jest y mocks: pruebas de funciones y módulos en JS
+
+---
+
+FIN DEL RESUMEN
+-->
+</body>
+</html>
