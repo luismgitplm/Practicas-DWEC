@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 01 cookies </title>
+</head>
+
+<body>
+    <h1> Examen Formularios, Cookies, LocalStorage, Json, Expresiones regulares</h1>
+    <img id="dragonBallImg" src="img2/goku.jpg" /> <br>
+    <h1 id="dragonBallNombre"> Goku </h1>
+
+    <fieldset>
+        <h2>Ejercicio 01 Formularios </h2>
+
+
+        <h4> <b> Ejercicio1.a :</b> </h4>
+        Debes crear un evento que al cambiar el select cambie la imagen <br>
+        del personaje de dragon ball en la foto y del h1 que hay debajo <br>
+        Para acceder al select Puedes tener mas informacion en la practica <br>
+        05-01-02 de los formularios <br>
+        Indicacion: Debes acceder a las propiedades <b>value</b> y text del elemento selectedIndex<br>
+        del objeto options del select <br>
+        </p>
+
+        <legend>
+            <h2> Ejercicio 1 Formularios</h2>
+        </legend>
+        <select id="dragonBall" onchange="Ej1AcambiarFoto()">
+            <option value='Beerus.jpg'>Beerus </option>
+            <option value='bu.jpg'>Bu </option>
+            <option value='bulma.jpg'>Bulma </option>
+            <option value='c17.jpg'>C17 </option>
+            <option value='diosa-cleopatra-jerez.jpg'>Diosa Cleopatra Jerez </option>
+            <option value='dios-elefante-Rumoosh.jpg'>Dios Elefante Rumoosh </option>
+            <option value='dios-gato2.jpg'>Dios Gato2 </option>
+            <option value='dios-payaso-Vermoudh.jpg'>Dios Payaso Vermoudh </option>
+            <option value='dios-pelos-Iwen.jpg'>Dios Pelos Iwen </option>
+            <option value='dios-pez.jpg'>Dios Pez </option>
+            <option value='dios-pez2.jpg'>Dios Pez2 </option>
+            <option value='dios-raton.jpg'>Dios Raton </option>
+            <option value='dios-robot.jpg'>Dios Robot </option>
+            <option value='dios-viejo.jpg'>Dios Viejo </option>
+            <option value='dios-zorro.jpg'>Dios Zorro </option>
+            <option value='gohan.jpg'>Gohan </option>
+            <option selected value='goku.jpg'>Goku </option>
+            <option value='goten.jpg'>Goten </option>
+            <option value='kaito.jpg'>Kaito </option>
+            <option value='krilin.jpg'>Krilin </option>
+            <option value='muten.jpg'>Muten </option>
+            <option value='pikolo.jpg'>Pikolo </option>
+            <option value='tensian.jpg'>Tensian </option>
+            <option value='toppo.jpg'>Toppo </option>
+            <option value='trunks.jpg'>Trunks </option>
+            <option value='vegeta.jpg'>Vegeta </option>
+            <option value='yansha.jpg'>Yansha </option>
+        </select><br><br>
+        <h4> <b> Ejercicio1.b :</b> </h4>
+        <p> Debes crear un evento que al pulsar en añadir personaje, <br>
+            nos lo añada a la lista del select <br>
+            puedes probar con Satan como nombre y satan.jpg como value <br>
+            Indicaciones: en la practica del form hay un ejercicio muy parecido con el codigo<br>
+        </p>
+        <label>Personaje: </label> <input type="text" id="Ej1BNombre" value="Satan"> <br>
+        <label>Imagen:</label> <input type="text" id="Ej1BImagen" value="satan.jpg"> <br>
+        <button onclick="Ej1BanadirSelect();">Ejercicio1B Añadir Personaje</button> <br>
+
+        <h4> <b> Ejercicio1.C :</b> </h4>
+        <p> Debes crear un evento que al pulsar en Eliminar personaje, <br>
+            nos lo elimine el personaje seleccionado de la lista del select <br>
+        </p>
+
+        <button onclick="Ej1CeliminarSelect();">Ejercicio1c Eñiminar Personaje</button> <br>
+
+
+    </fieldset>
+    <br>
+    <fieldset>
+        <legend>
+            <h2> Ejercicio 2 Cookies </h2>
+        </legend>
+        <h2>Ejercicio 02 Cookies </h2>
+
+        <h4> <b> Ejercicio2.a </b></h4>
+        <p> Debes crear un evento que al pulsar el boton "2A.Añadir Personaje Seleccionado" <br>
+            se añada a la lista de cookies el personaje seleccionado <br>
+            con el formato nombre=imagen (los puedes sacar ambos del select)
+        </p>
+        <button onclick="Ej2Aaddcookie()">Ejercicio2A Añadir Personaje Seleccionado a las cookies</button> <br><br>
+
+        <h4> <b> Ejercicio2.b </b></h4>
+        <p> Debes crear un evento que al pulsar el boton "Ejercicio2B Ver todas los Personajes cookies " <br>
+            Muestres todos los elementos en las Cookies (todas las imagenes) <br>
+            en la seccion con id "CookiesGuardadas" del ejercicio2
+        </p>
+        <button onclick="Ej2Bvercookies()">Ejercicio2B Ver todas los Personajes cookies </button> <br><br>
+        <h4> <b> Ejercicio2.c </b></h4>
+        <p> Debes crear un evento que al pulsar el boton "Ejercicio2C Borrar Personaje Seleccionado de las cookies" <br>
+            Borres la cookie del personaje seleccionado en el Select del ejercicio 1 <br>
+        </p>
+        <button onclick="Ej2Cborrarcookie()">Ejercicio2C Borrar Personaje Seleccionado de las cookies </button> <br><br>
+
+        <h4> <b> Ejercicio2.d </b></h4>
+        <p> Debes crear un evento que al pulsar el boton "Ejercicio2D borrar todas las cookies " <br>
+            Borre todas las Cookies <br>
+        </p>
+        <button onclick="Ej2Dborrartodaslascookies()">Ejercicio2D borrar todas las cookies </button> <br><br>
+        <p> Salida Ejercicio 2:</p>
+        <p id="CookiesGuardadas"> </p>
+    </fieldset>
+
+
+    <fieldset>
+        <legend>
+            <h2> Ejercicio 3 LocalStorage </h2>
+        </legend>
+        <h2>Ejercicio 03 LocalStorage </h2>
+        <p> Es lo mismo que has hecho arriba en el ejercicio 2 pero con local storage</p>
+        <h4> <b> Ejercicio 3.a </b></h4>
+        <p> Debes crear un evento que al pulsar el boton "3A.Añadir al LocalStorage Personaje Seleccionado" <br>
+            se añada a la lista de LocalStorage el personaje seleccionado <br>
+        </p>
+        <button onclick="Ej3AaddLocalStorage()">Ejercicio3A Añadir al LocalStorage Personaje Seleccionado</button>
+        <br><br>
+
+        <h4> <b> Ejercicio 3.B </b></h4>
+        <p> Debes crear un evento que al pulsar el boton "Ejercicio3B Ver todas los Personajes LocalStorage " <br>
+            Muestres todos los elementos en las LocalStorage (todas las imagenes) <br>
+            en la seccion con id "LocalStorageGuardadas" del ejercicio2
+        </p>
+        <button onclick="Ej3BverLocalStorage()">Ejercicio3B Ver todas los Personajes LocalStorage </button> <br><br>
+
+        <ul id="lista3"></ul>
+
+        <h4> <b> Ejercicio 3.C </b></h4>
+        <p> Debes crear un evento que al pulsar el boton "Ejercicio3C Borrar Personaje Seleccionado de las LocalStorage"
+            <br>
+            Borres del LocalStorage el personaje seleccionado en el Select del ejercicio 1 <br>
+        </p>
+        <button onclick="Ej3CBorrarPersonajeLocalStorage()">Ejercicio3C Borrar Personaje Seleccionado de las
+            LocalStorage </button> <br><br>
+
+        <h4> <b> Ejercicio 3.D </b></h4>
+        <p> Debes crear un evento que al pulsar el boton "Ejercicio3D borrar todas los elementos del LocalStorage" <br>
+            Borre todos los elementos del LocalStorage <br>
+        </p>
+        <button onclick="Ej3DborrartodaslasLocalStorage()">Ejercicio3D borrar todas los elementos del LocalStorage
+        </button> <br><br>
+        <p> Salida Ejercicio 3:</p>
+        <p id="LocalStorageGuardadas"> </p>
+    </fieldset>
+
+
+
+    <fieldset>
+        <legend>
+            <h2> Ejercicio 04 JSON </h2>
+        </legend>
+        <h2>Ejercicio 04 JSON </h2>
+        <p>
+            Os os proporciono un array que sera la salida de la peticion
+            una cadena que seria la salida de esa peticion.<br>
+
+            const JSONData = ` {<br>
+            "Personaje1":{"nombre": "Gohan", "amigos": ["Kaito","Goku","Goten"], "planeta": "Tierra","raza": "Saiyajin",
+            "imagen": "gohan.jpg"}, <br>
+            "Personaje2":{"nombre": "Goku", "amigos": ["Krilin","Goten","Kaito"], "planeta": "Sadala","raza":
+            "Saiyajin", "imagen": "goku.jpg"}, <br>
+            "Personaje3":{"nombre": "Goten", "amigos": ["Muten","Kaito","Krilin"], "planeta": "Tierra","raza":
+            "Saiyajin", "imagen": "goten.jpg"}, <br>
+            "Personaje4":{"nombre": "Kaito", "amigos": ["Pikolo","Krilin","Muten"], "planeta": "Vegeta","raza": "Dios
+            Creación", "imagen": "kaito.jpg"}, <br>
+            "Personaje5":{"nombre": "Krilin", "amigos": ["Tensian","Muten","Pikolo"], "planeta": "Tierra","raza":
+            "Humano", "imagen": "krilin.jpg"}, <br>
+            "Personaje6":{"nombre": "Muten", "amigos": ["Krilin","Kaito","Tensian"], "planeta": "Tierra","raza":
+            "Humano", "imagen": "muten.jpg"}, <br>
+            "Personaje7":{"nombre": "Pikolo", "amigos": ["Trunks","Tensian","Toppo"], "planeta": "Namek","raza":
+            "Namekiano", "imagen": "pikolo.jpg"}, <br>
+            "Personaje8":{"nombre": "Tensian", "amigos": ["Vegeta","Toppo","Trunks"], "planeta": "Tierra","raza":
+            "Humano", "imagen": "tensian.jpg"}, <br>
+            "Personaje9":{"nombre": "Toppo", "amigos": ["Yansha","Trunks","Vegeta"], "planeta": "Universo 11","raza":
+            "Alien", "imagen": "toppo.jpg"}, <br>
+            "Personaje10":{"nombre": "Trunks", "amigos": ["Muten","Vegeta","Yansha"], "planeta": "Tierra","raza":
+            "Humano", "imagen": "trunks.jpg"}, <br>
+            "Personaje11":{"nombre": "Vegeta", "amigos": ["Goten","Yansha","Krilin"], "planeta": "Sadala","raza":
+            "Sayan", "imagen": "vegeta.jpg"}, <br>
+            "Personaje12":{"nombre": "Yansha", "amigos": ["Tensian","Goten","Pikolo"], "planeta": "Tierra","raza":
+            "Humano", "imagen": "yansha.jpg"} <br>
+            } `;<br>
+        </p>
+
+        Usa las funciones de JSON para convertir este json en un objeto<br>
+        recorrible y mostralo por pantalla con el siguiente formato como el de la imagen<br>
+        Nombre: Gohan<br>
+        raza: Saiyajin<br>
+        planeta: Tierra<br>
+        amigos: Kaito,Goku,Goten <br>
+        imagen<br>
+        <br>
+
+        <button onclick="Ej4verJson()">Ejercicio4A Ver Personajes en el Json</button> <br><br>
+
+        <img src="img2/ejercicio4.jpg" width="500"> <br><br>
+
+
+
+
+
+        <p id="Ej4mostrarJSON"> </p>
+
+
+
+
+
+    </fieldset>
+
+
+
+    <script>
+        // ejercicio1
+        function Ej1AcambiarFoto() {
+            // este codigo lo he dejado pq te va a hacer
+            // falta muchas veces en el Examen 
+            let personajeImagen = document.getElementById("dragonBall").value;
+            let indice = document.getElementById("dragonBall").selectedIndex;
+            let personajeNombre = document.getElementById("dragonBall").options[indice].text;
+
+            document.getElementById("dragonBallImg").src = `img2/${personajeImagen}`
+            document.getElementById("dragonBallNombre").innerHTML = personajeNombre
+
+        }
+
+        function Ej1BanadirSelect() {
+            var select = document.getElementById("dragonBall");
+            var opcionnueva = document.getElementById("Ej1BNombre").value;
+            var valornuevo = document.getElementById("Ej1BImagen").value;
+
+            var option = document.createElement("option");
+            option.text = opcionnueva;
+            option.value = valornuevo;
+            select.add(option);
+
+        }
+
+        function Ej1CeliminarSelect() {
+            var select = document.getElementById("dragonBall");
+            var opcionSeleccionada = select.selectedIndex;
+            var opcionEliminar = select.options[opcionSeleccionada];
+            select.remove(opcionEliminar);
+        }
+
+
+        // ejercicio2
+        function Ej2Aaddcookie() {
+        }
+
+        function Ej2Bvercookies() {
+        }
+
+        function Ej2Cborrarcookie() {
+            const fechaExpiracion = "expires='Mon, 1 Jan 2000 00:00:00 GMT'";
+
+        }
+
+        function Ej2Dborrartodaslascookies() {
+            const fechaExpiracion = "expires='Mon, 1 Jan 2000 00:00:00 GMT'";
+
+        }
+
+
+        // ejercicio3
+        function Ej3AaddLocalStorage() { 
+            let indice = document.getElementById("dragonBall").selectedIndex;
+            let personajeNombre = document.getElementById("dragonBall").options[indice].text;
+
+            localStorage.setItem('Nombre', personajeNombre);
+        };
+        function Ej3BverLocalStorage() {
+            
+            var lista=document.getElementById('lista3');
+            lista.innerHTML="";
+            for(var i=0;i<localStorage.length;i++){
+                var clave=localStorage.key(i);
+                var valor=localStorage.getItem(clave);
+                var li=document.createElement('li');
+                li.innerHTML=clave+" : "+valor;
+                lista.appendChild(li);
+            }
+        };
+        function Ej3CBorrarPersonajeLocalStorage() { };
+        function Ej3DborrartodaslasLocalStorage() { };
+
+
+        // ejercicio4 JSON 
+
+        const JSONData = ` {
+            "Personaje1":{"nombre": "Gohan", "amigos": ["Kaito","Goku","Goten"], "planeta": "Tierra","raza": "Saiyajin", "imagen": "gohan.jpg"} ,
+            "Personaje2":{"nombre": "Goku", "amigos": ["Krilin","Goten","Kaito"], "planeta": "Sadala","raza": "Saiyajin", "imagen": "goku.jpg"},
+            "Personaje3":{"nombre": "Goten", "amigos": ["Muten","Kaito","Krilin"], "planeta": "Tierra","raza": "Saiyajin", "imagen": "goten.jpg"},
+            "Personaje4":{"nombre": "Kaito", "amigos": ["Pikolo","Krilin","Muten"], "planeta": "Vegeta","raza": "Dios Creación", "imagen": "kaito.jpg"},
+            "Personaje5":{"nombre": "Krilin", "amigos": ["Tensian","Muten","Pikolo"], "planeta": "Tierra","raza": "Humano", "imagen": "krilin.jpg"},
+            "Personaje6":{"nombre": "Muten", "amigos": ["Krilin","Kaito","Tensian"], "planeta": "Tierra","raza": "Humano", "imagen": "muten.jpg"},
+            "Personaje7":{"nombre": "Pikolo", "amigos": ["Trunks","Tensian","Toppo"], "planeta": "Namek","raza": "Namekiano", "imagen": "pikolo.jpg"},
+            "Personaje8":{"nombre": "Tensian", "amigos": ["Vegeta","Toppo","Trunks"], "planeta": "Tierra","raza": "Humano", "imagen": "tensian.jpg"},
+            "Personaje9":{"nombre": "Toppo", "amigos": ["Yansha","Trunks","Vegeta"], "planeta": "Universo 11","raza": "Alien", "imagen": "toppo.jpg"},
+            "Personaje10":{"nombre": "Trunks", "amigos": ["Muten","Vegeta","Yansha"], "planeta": "Tierra","raza": "Humano", "imagen": "trunks.jpg"},
+            "Personaje11":{"nombre": "Vegeta", "amigos": ["Goten","Yansha","Krilin"], "planeta": "Sadala","raza": "Sayan", "imagen": "vegeta.jpg"},
+            "Personaje12":{"nombre": "Yansha", "amigos": ["Tensian","Goten","Pikolo"], "planeta": "Tierra","raza": "Humano", "imagen": "yansha.jpg"}
+        }`;
+        function Ej4verJson() {
+            var cadena = ''
+            const objeto = JSON.parse(JSONData)
+
+           for (let personaje in Object.values(objeto)) {
+                
+                cadena += ` <fieldset>             
+                <h2>Nombre: ${personaje.nombre} </h2> 
+                <p> raza: ${personaje.raza}</p>
+                <p> planeta: ${personaje.planeta}</p>
+                <p> amigos: ${personaje.amigos}</p>
+                <p> <img src="img2/${personaje.imagen}"/>: </p>
+                </fieldset> <br>
+                `
+
+                console.log(personaje.nombre)
+            }
+            const JSONDisplay = document.getElementById("Ej4mostrarJSON");
+            JSONDisplay.innerHTML += cadena;
+
+            console.log(Object.values(objeto))
+
+            
+
+        };  
+    </script>
+</body>
+
+</html>

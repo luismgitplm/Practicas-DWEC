@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+         <meta charset="UTF-8">
+         <title>Ejercicio7  Ajax  </title>
+         <style > 
+          .formulario { 
+            margin: auto; 
+            border: 1px solid red;           
+            border-radius: 8px;                       
+            width: 800px;  
+            padding: 20px;          
+        }
+        </style>
+</head>
+<body>  
+
+    
+<div class="formulario">
+    <h2> Ejercicio7  Ajax  </h2>   
+         
+   </div>
+ 
+<div class="formulario">
+    <h2> Ejercicio71 con fetch y then </h2>
+    <p>Toma el documento Ejercicio07.html 
+        Realiza un ejercicio en el cual coja los datos de select  con esos datos haga una llamada 
+        ajax al documento ejercicio07personajes.php y que lo muestre lo que te ha devuelto los 
+        campos y también la imagen.
+         Si sabes usarlo usa el mod rewrite.  Haz las llamadas ajax con el fetch y con el await. 
+    </p> 
+    <select id="Ejercicio7"> 
+        <option value="Goku"> Goku </option>
+        <option value="Vegeta"> Vegeta </option>
+        <option value="Gohan"> Gohan </option>
+        <option value="Piccolo"> Piccolo </option>
+    </select>
+<hr>
+    <h2> Ejercicio71 con fetch y then </h2>
+    <button id="Ejercicio71" >   Ejercicio71 con fetch y then  </button>
+ <p> nombre =>  <span id="nombre1"> </span> </p>
+      <p> "raza" => <span id="raza1"> </span> </p>
+       <p> "nivel_poder" =>  <span id="nivel_poder1"> </span> </p>
+      <p>   "tecnica" =>  <span id="tecnica1"> </span> </p>
+      <p>   "imagen" =>  <img id="imagen1" src="" width="100px"> </p>
+
+
+    
+    
+<hr>
+     <h2> Ejercicio72 con await   </h2>
+    
+   <button id="Ejercicio72" >   Ejercicio72 con await  </button>
+    <br> <p> nombre =>  <span id="nombre2"> </span> </p>
+      <p> "raza" => <span id="raza2"> </span> </p>
+       <p> "nivel_poder" =>  <span id="nivel_poder2"> </span> </p>
+      <p>   "tecnica" =>  <span id="tecnica2"> </span> </p>
+      <p>   "imagen" =>  <img id="imagen2" src="" width="100px"> </p>
+  
+
+ 
+
+
+</div>
+   
+    <script > 
+
+// Ejercicio 1 llamada con fetch
+    document.getElementById('Ejercicio71').addEventListener('click',ejercicio71fetch);
+
+function ejercicio71fetch() {            
+   
+   }
+
+
+// Ejercicio 1 llamada con await
+    document.getElementById('Ejercicio72').addEventListener('click',ejercicio72await);
+    function ejercicio72await() {            
+      
+       }
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
