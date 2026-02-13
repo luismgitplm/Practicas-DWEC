@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Guía JSON en JavaScript</title>
+</head>
+<body>
+
+<!-- 
+==========================================
+GUÍA DE JSON EN JAVASCRIPT
+==========================================
+
+1. ¿Qué es JSON?
+JSON (JavaScript Object Notation) es un formato ligero de intercambio de datos.
+Se utiliza para transmitir información entre un servidor y un cliente de forma legible.
+JSON es texto plano y sigue una estructura muy similar a los objetos de JavaScript.
+
+Ejemplo de JSON:
+{
+  "nombre": "Pepito",
+  "edad": 25,
+  "amigos": ["Juan", "Maria", "Kiko"],
+  "direccion": {"ciudad": "Torremolinos", "pais": "España"}
+}
+
+==========================================
+2. Convertir JSON a objeto JavaScript
+Para trabajar con los datos JSON en JS, primero debemos convertir la cadena JSON a un objeto.
+
+Uso:
+const cadena = '{"nombre":"Pepito","edad":25}';
+const obj = JSON.parse(cadena);
+
+Resultado:
+obj.nombre -> "Pepito"
+obj.edad -> 25
+
+==========================================
+3. Convertir objeto JavaScript a JSON
+Si queremos enviar datos al servidor o almacenarlos en un string, usamos JSON.stringify().
+
+Uso:
+const obj = {nombre: "Pepito", edad: 25};
+const cadena = JSON.stringify(obj);
+
+Resultado:
+cadena -> '{"nombre":"Pepito","edad":25}'
+
+==========================================
+4. Acceder a propiedades de un objeto JSON
+Una vez parseado con JSON.parse, se puede acceder igual que a un objeto JavaScript:
+obj.propiedad
+obj["propiedad"]
+
+Ejemplo:
+const cadena = '{"nombre":"Pepito","edad":25}';
+const obj = JSON.parse(cadena);
+console.log(obj.nombre); // "Pepito"
+console.log(obj["edad"]); // 25
+
+==========================================
+5. Iterar arrays dentro de JSON
+Si un campo es un array, podemos recorrerlo con bucles:
+
+Ejemplo:
+const cadena = '{"amigos":["Juan","Maria","Kiko"]}';
+const obj = JSON.parse(cadena);
+for(let i=0;i<obj.amigos.length;i++){
+  console.log(obj.amigos[i]);
+}
+
+Resultado esperado:
+Juan
+Maria
+Kiko
+
+==========================================
+6. Iterar objetos JSON con múltiples claves
+Si el JSON contiene varios objetos anidados, podemos recorrerlos con for...in:
+
+Ejemplo:
+const data = `{
+  "Alumno1":{"name":"Pepito","from":"Torrem","favFriends":["Juan","Kiko"]},
+  "Alumno2":{"name":"Maria","from":"Malaga","favFriends":["Loli","Kiko"]}
+}`;
+const obj = JSON.parse(data);
+for(const alumno in obj){
+  console.log(obj[alumno].name + " es de " + obj[alumno].from);
+}
+
+Resultado esperado:
+Pepito es de Torrem
+Maria es de Malaga
+
+==========================================
+7. Manipular JSON y arrays
+Se pueden agregar, eliminar o modificar elementos igual que en objetos JS:
+- obj.propiedad = valor;
+- delete obj.propiedad;
+- obj.array.push("nuevoElemento");
+
+==========================================
+8. JSON y almacenamiento
+JSON se usa frecuentemente con:
+- localStorage: guardar datos como string
+- sessionStorage
+- enviar datos a APIs
+
+Ejemplo con localStorage:
+const usuario = {nombre:"Pepito", edad:25};
+localStorage.setItem("usuario", JSON.stringify(usuario));
+
+const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+console.log(usuarioGuardado.nombre); // "Pepito"
+
+==========================================
+9. Buenas prácticas
+- Siempre usar try...catch al parsear JSON que pueda ser inválido.
+- Validar los datos recibidos del servidor.
+- Evitar almacenar datos sensibles en JSON en el frontend sin cifrar.
+- JSON.stringify tiene un segundo parámetro opcional para formatear con indentación:
+JSON.stringify(obj, null, 2)
+
+Ejemplo:
+const obj = {nombre:"Pepito", edad:25};
+console.log(JSON.stringify(obj, null, 2));
+
+Resultado esperado:
+{
+  "nombre": "Pepito",
+  "edad": 25
+}
+
+==========================================
+10. Notas adicionales
+- JSON solo permite: objetos {}, arrays [], números, strings, booleanos, null
+- No permite funciones, fechas, undefined directamente
+- Para fechas usar ISO strings y luego convertir a Date:
+JSON.parse('{"fecha":"2026-02-13T12:00:00Z"}')
+
+Ejemplo:
+const obj = JSON.parse('{"fecha":"2026-02-13T12:00:00Z"}');
+const fecha = new Date(obj.fecha);
+console.log(fecha); // Fri Feb 13 2026 12:00:00 GMT+0000 (Coordinated Universal Time)
+
+==========================================
+FIN DE LA GUÍA DE JSON
+==========================================
+-->
+
+</body>
+</html>

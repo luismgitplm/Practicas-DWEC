@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ejercicios JSON</title>
+</head>
+<body>
+<h1>Luis Miguel Rodríguez Narváez 05-12 DWEC</h1>
+<h2>Ejercicio 1</h2>
+<div id="json"></div>
+<p>El código convierte una cadena JSON en un objeto, y luego muestra en pantalla el nombre, la lista de amigos y la ciudad del objeto.</p>
+
+<script>
+const JSONCadena = '{"nombre": "Pepito", "Amiguitos": ["Manolo", "Juanito", "Kiko", "Pedrito"], "ciudad": "Torremolinos"}';
+try {
+  const JSONObjeto = JSON.parse(JSONCadena);
+  const JSONDisplay = document.getElementById("json");
+  JSONDisplay.innerHTML = JSONObjeto.nombre + ", [" + JSONObjeto.Amiguitos + "], " + JSONObjeto.ciudad;
+} catch (error) {
+  console.log("Error json");
+}
+</script>
+
+<hr>
+
+<h2>Ejercicio 2</h2>
+<div id="json2"></div>
+
+<script>
+const JSONCadena2 = '{"nombre": "Pepito", "Amiguitos": ["Manolo", "Juanito", "Kiko", "Pedrito"], "ciudad": "Torremolinos"}';
+const obj2 = JSON.parse(JSONCadena2);
+const display2 = document.getElementById("json2");
+display2.innerHTML = "Nombre: " + obj2.nombre + "<br>Ciudad: " + obj2.ciudad + "<br>Amigos:<ul>";
+for(let i = 0; i < obj2.Amiguitos.length; i++){
+  const li = document.createElement("li");
+  li.textContent = obj2.Amiguitos[i];
+  display2.appendChild(li);
+}
+display2.innerHTML += "</ul>";
+</script>
+
+<hr>
+
+<h2>Ejercicio 3</h2>
+<div id="json3"></div>
+
+<script>
+const JSONData = `{
+"Alumno1":{"name": "Pepito", "favFriends": ["Manolo", "Juanito", "Kiko", "Pedrito"], "from": "Torrem"},
+"Alumno2":{"name": "Juanito", "favFriends": ["Loli", "Kiko", "Pepito", "Pedrito"], "from": "Malaga"},
+"Alumno3":{"name": "Kiko", "favFriends": ["Loli", "Juanito", "Inma", "Maria"], "from": "Churriana"},
+"Alumno4":{"name": "Loli", "favFriends": ["Kiko", "Juanito", "Inma", "Maria"], "from": "Torrem"},
+"Alumno5":{"name": "Maria", "favFriends": ["Loli", "Juanito", "Inma", "Kiko"], "from": "Churriana"}
+}`;
+const obj3 = JSON.parse(JSONData);
+const display3 = document.getElementById("json3");
+
+for(const alumno in obj3){
+  const div = document.createElement("div");
+  div.innerHTML = obj3[alumno].name + " es de " + obj3[alumno].from + " y tiene por amigos a: " + obj3[alumno].favFriends.join(", ");
+  display3.appendChild(div);
+}
+</script>
+
+</body>
+</html>
